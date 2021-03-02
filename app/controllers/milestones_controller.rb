@@ -1,5 +1,5 @@
 class MilestonesController < ApplicationController
-before_action :set_allotment, only: :show
+before_action :set_milestone, only: :show
   def show
     @tasks = current_user.guild.milestone.tasks
   end
