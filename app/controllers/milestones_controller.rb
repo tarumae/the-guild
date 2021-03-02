@@ -1,5 +1,5 @@
 class MilestonesController < ApplicationController
-before_action :set_allotment, only: :show
+before_action :set_milestone, only: :show
   def index
     @milestones = policy_scope(Milestone)
   end
