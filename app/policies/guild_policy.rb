@@ -2,7 +2,6 @@ class GuildPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(user: user)
-      scope.guild_users.where(user: user)
     end
   end
 
