@@ -7,5 +7,4 @@ class Guild < ApplicationRecord
   CATEGORIES = %w[Family Work Gaming Sports Education General]
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :name, presence: true, length: { minimum: 3, maximum: 60 }
-  validates :user, presence: true
 end
