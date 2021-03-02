@@ -1,7 +1,7 @@
 class Guild < ApplicationRecord
   belongs_to :user
   has_many :posts, dependent: :destroy
-  has_many :guild_users
+  has_many :guildmemberships
   has_many :milestones
 
   CATEGORIES = %w[Family Work Gaming Sports Education General]

@@ -11,7 +11,7 @@ puts "Cleaning database..."
 Task.destroy_all
 Milestone.destroy_all
 Post.destroy_all
-GuildUser.destroy_all
+Guildmembership.destroy_all
 Guild.destroy_all
 User.destroy_all
 
@@ -30,7 +30,7 @@ nottheguild = Guild.create!(name: "Not The Guild", description: "Test guild", us
 
 puts "Creating membership associations for the created guilds..."
 
-GuildUser.create(user: jihye, guild: theguild, admin: true)
-GuildUser.create(user: daniele, guild: theguild, admin: true)
-GuildUser.create(user: john, guild: theguild)
-GuildUser.create(user: jane, guild: nottheguild)
+Guildmembership.create(user: jihye, guild: theguild, admin: true)
+Guildmembership.create(user: daniele, guild: theguild, admin: true)
+Guildmembership.create(user: john, guild: theguild)
+Guildmembership.create(user: jane, guild: nottheguild)
