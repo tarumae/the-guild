@@ -3,9 +3,19 @@ class MilestonePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
   end
-    def show?
-      record.user == user
-    end
+
+  def show?
+    record.user == user || record.guildmemberships.where(user: user).present?
+  end
+
+  def create?
+    true
+  end
+
+  def new?
+    # checking if user is admin
+    # user.guildmembership.admin <- this won't work as user.guildmemberships would return an array of guildmemberships.
+    true
+  end
 end

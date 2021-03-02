@@ -6,13 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Cleaning database..."
 
-john = User.create!(email: "john@john.com", password: "testtest")
+Task.destroy_all
+Milestone.destroy_all
+Post.destroy_all
+Guildmembership.destroy_all
+Guild.destroy_all
+User.destroy_all
 
-guild1 = Guild.new(name: "The Horde", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", category: "Family")
-guild1.user = john
-guild1.save
+puts "Creating new users..."
 
-milestone1 = Milestone.new(title: "milestone", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", deadline: "2021-04-08")
-milestone1.guild = guild1
-milestone1.save
+jihye = User.new(email: "jihye@theguild.fun", password: "testtest")
+daniele = User.new(email: "daniele@theguild.fun", password: "testtest")
+tom = User.new(email: "tom@theguild.fun", password: "testtest")
+john = User.new(email: "john@theguild.fun", password: "testtest")
+jane = User.new(email: "jane@theguild.fun", password: "testtest")
+
+puts "Creating new guilds..."
+
+theguild = Guild.create!(name: "The Guild @ Le Wagon", description: "The Guild team at Le Wagon Batch #522", user: tom, category: "Education")
+nottheguild = Guild.create!(name: "Not The Guild", description: "Test guild", user: john, category: "Gaming")
+
+puts "Creating membership associations for the created guilds..."
+
+Guildmembership.create(user: jihye, guild: theguild, admin: true)
+Guildmembership.create(user: daniele, guild: theguild, admin: true)
+Guildmembership.create(user: john, guild: theguild)
+
+Guildmembership.create(user: jane, guild: nottheguild)
+
