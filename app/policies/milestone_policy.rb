@@ -3,9 +3,11 @@ class MilestonePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
   end
+
   def show?
-    record.user == user || record.guild_users.where(user: user).present?
+    record.user == user || record.guildmemberships.where(user: user).present?
   end
 
   def create?
@@ -17,4 +19,5 @@ class MilestonePolicy < ApplicationPolicy
     # user.guild_user.admin
     true
   end
+
 end

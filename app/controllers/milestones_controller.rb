@@ -4,6 +4,7 @@ before_action :set_milestone, only: :show
     @milestones = policy_scope(Milestone)
   end
 
+
   def new
     @milestone = Milestone.new
     @guild = Guild.find(params[:guild_id])
