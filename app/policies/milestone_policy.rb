@@ -5,7 +5,7 @@ class MilestonePolicy < ApplicationPolicy
     end
 
     def show?
-      true
+      record.user == user
     end
   end
 end

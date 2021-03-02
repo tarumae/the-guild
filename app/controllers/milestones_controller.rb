@@ -1,7 +1,7 @@
 class MilestonesController < ApplicationController
 before_action :set_allotment, only: :show
   def show
-    @tasks = current_user.guilds.milestones.tasks
+    @tasks = current_user.guild.milestone.tasks
   end
 
   private
