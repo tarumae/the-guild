@@ -6,7 +6,7 @@ class MilestonePolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user || record.guildmemberships.where(user: user).present?
+    record.guild.user == user || record.guild.guildmemberships.where(user: user).present?
   end
 
   def create?
