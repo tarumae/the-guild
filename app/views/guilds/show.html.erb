@@ -54,11 +54,11 @@
       </div>
     </div>
   </div>
-  <div class="guild-users">
+  <div class="guild-memberships">
     <h4>Guild Members</h4>
     <ul>
       <li><%= @guild.user.email %></li>
-      <% @guild.guild_users.each do |guild_user| %>
+      <% @guild.guildmemberships.each do |guild_user| %>
       <li><%= guild_user.user.email %></li>
       <% end %>
     </ul>

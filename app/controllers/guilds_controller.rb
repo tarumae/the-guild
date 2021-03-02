@@ -1,4 +1,9 @@
 class GuildsController < ApplicationController
+  def index
+    @guilds = policy_scope(Guild)
+    raise
+  end
+  
   def show
     @guild = Guild.find(params[:id])
     authorize @guild
