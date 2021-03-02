@@ -1,5 +1,9 @@
 class MilestonesController < ApplicationController
 before_action :set_allotment, only: :show
+  def index
+    @milestones = policy_scope(Milestone)
+  end
+
   def show
     @tasks = current_user.guild.milestone.tasks
   end
