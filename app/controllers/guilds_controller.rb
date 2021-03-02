@@ -1,4 +1,9 @@
 class GuildsController < ApplicationController
+  def show
+    @guild = Guild.find(params[:id])
+    authorize @guild
+  end
+
   def new
     @guild = Guild.new
     authorize @guild
@@ -9,10 +14,10 @@ class GuildsController < ApplicationController
     @guild.user = current_user
     authorize @guild
     if @guild.save
-      flash[:notice] = "Guild successfully created"
+      flash[:notice] = "Guild successfully created!"
       redirect_to guild_path(@guild)
     else
-      flash[:alert] = "Something went wrong. Please try again"
+      flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
       render :new
     end
   end
