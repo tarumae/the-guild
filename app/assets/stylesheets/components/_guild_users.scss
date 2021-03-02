@@ -1,0 +1,11 @@
+.guild-users {
+  display: flex;
+  margin: 50px auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+}
