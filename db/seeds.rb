@@ -34,3 +34,4 @@ GuildUser.create(user: jihye, guild: theguild, admin: true)
 GuildUser.create(user: daniele, guild: theguild, admin: true)
 GuildUser.create(user: john, guild: theguild)
 GuildUser.create(user: jane, guild: nottheguild)
+
