@@ -33,4 +33,6 @@ puts "Creating membership associations for the created guilds..."
 Guildmembership.create(user: jihye, guild: theguild, admin: true)
 Guildmembership.create(user: daniele, guild: theguild, admin: true)
 Guildmembership.create(user: john, guild: theguild)
+
 Guildmembership.create(user: jane, guild: nottheguild)
+
