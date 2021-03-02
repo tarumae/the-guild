@@ -1,0 +1,67 @@
+
+<div class="banner" style="background-image: url(https://via.placeholder.com/1920x300)">
+  <h1><%= @guild.name %></h1>
+</div>
+<div class="row">
+  <div class="show-navbar">
+    <ul class="nav nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
+      <li class="nav-item">
+        <a class="nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;">All posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="picture-posts-tab" data-toggle="tab" href="#picture-posts" role="tab" aria-controls="picture-posts" aria-selected="false" style="border: none;">Pictures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="posts">
+      <p>This is a div that will house the function of posting. Will be able to do the form after the post routes are set in place.</p>
+    </div>
+    <div class="tab-content" id="guildNavbarContent">
+      <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
+        <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+          <div class="avatar-picture">
+            <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
+          </div>
+          <div class="post-content">
+            <p style="margin-bottom: 0px; margin-left: 30px;">This is a post. This tab will house all posts. Need logic here to display all the posts relevant to this specific guild. </p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
+        <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+          <div class="avatar-picture">
+            <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
+          </div>
+          <div class="post-content">
+            <p style="margin-bottom: 0px; margin-left: 30px;">Pictures. Going to need logic here to display all posts that have pictures in them and have been posted to this specific guild. </p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="video-posts" role="tabpanel" aria-labelledby="video-posts-tab">
+        <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+          <div class="avatar-picture">
+            <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
+          </div>
+          <div class="post-content">
+            <p style="margin-bottom: 0px; margin-left: 30px;">Videos. Going to need logic here to display all posts that have videos in them and have been posted to this specific guild. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="guild-users">
+    <h4>Guild Members</h4>
+    <ul>
+      <li><%= @guild.user.email %></li>
+      <% @guild.guild_users.each do |guild_user| %>
+      <li><%= guild_user.user.email %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
