@@ -58,8 +58,8 @@
     <h4>Guild Members</h4>
     <ul>
       <li><%= @guild.user.email %></li>
-      <% @guild.guildmemberships.each do |guild_user| %>
-      <li><%= guild_user.user.email %></li>
+      <% @guild.guildmemberships.each do |guildmembership| %>
+      <li><%= guildmembership.user.email %></li>
       <% end %>
     </ul>
   </div>

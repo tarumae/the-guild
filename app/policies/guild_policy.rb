@@ -1,7 +1,7 @@
 class GuildPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      user.all_guilds
     end
   end
 

@@ -3,7 +3,6 @@ class MilestonePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
   end
 
   def show?
@@ -16,8 +15,7 @@ class MilestonePolicy < ApplicationPolicy
 
   def new?
     # checking if user is admin
-    # user.guild_user.admin
+    # user.guildmembership.admin <- this won't work as user.guildmemberships would return an array of guildmemberships.
     true
   end
-
 end
