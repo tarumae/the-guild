@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :milestones
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
   end
+
 end

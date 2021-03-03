@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for [@guild, @post] do |f| %>
+    <h1>Description: </h1>
+    <%= f.input :content, label: false %>
+    <%= f.button :submit, class: "btn btn-flat"%>
+  <% end %>
+</div>

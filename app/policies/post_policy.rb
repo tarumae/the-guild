@@ -18,6 +18,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def new?
-    false
+    record.guild.members.include?(user)
+  end
+
+  def create?
+    new?
   end
 end
