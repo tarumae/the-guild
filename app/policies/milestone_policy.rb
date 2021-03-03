@@ -16,11 +16,15 @@ class MilestonePolicy < ApplicationPolicy
   def new?
     # checking if user is admin
     # user.guildmembership.admin <- this won't work as user.guildmemberships would return an array of guildmemberships.
-    true
+    record.guild.user == user || record.guild.guildmemberships.where(user: user, admin: true).present?
   end
 
   def update?
     # checking if user is admin
-    true
+    record.guild.user == user || record.guild.guildmemberships.where(user: user, admin: true).present?
+  end
+
+  def destroy?
+    record.guild.user == user || record.guild.guildmemberships.where(user: user, admin: true).present?
   end
 end

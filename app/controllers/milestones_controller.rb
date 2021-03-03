@@ -1,5 +1,5 @@
 class MilestonesController < ApplicationController
-before_action :set_milestone, only: [:show, :update]
+before_action :set_milestone, only: [:show, :update, :destroy]
   def index
     @milestones = policy_scope(Milestone)
   end
@@ -49,6 +49,14 @@ before_action :set_milestone, only: [:show, :update]
           "Something went wrong. Please try again later. If this issue persists, please contact the support team."
       end
     end
+  end
+
+  def destroy
+    # As a guild admin I can archive or destroy a milestone
+    @guild = @milestone.guild
+    @milestone.destroy
+    flash[:notice] = "Milestone successfully destroyed!"
+    redirect_to guild_milestones_path(@milestone.guild)
   end
 
   private
