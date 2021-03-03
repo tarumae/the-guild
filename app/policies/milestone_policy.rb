@@ -18,4 +18,9 @@ class MilestonePolicy < ApplicationPolicy
     # user.guildmembership.admin <- this won't work as user.guildmemberships would return an array of guildmemberships.
     true
   end
+
+  def update?
+    # checking if user is admin
+    true
+  end
 end

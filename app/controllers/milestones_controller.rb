@@ -1,5 +1,5 @@
 class MilestonesController < ApplicationController
-before_action :set_milestone, only: :show
+before_action :set_milestone, only: [:show, :update]
   def index
     @milestones = policy_scope(Milestone)
   end
@@ -26,6 +26,29 @@ before_action :set_milestone, only: :show
 
   def show
     @tasks = @milestone.tasks
+  end
+
+  def update
+    # As a guild admin I can reuse previous milestones
+    @guild = Guild.find(params[:guild_id])
+    @milestone.completed = params[:completed]
+    if @milestone.completed
+      if @milestone.save
+        flash[:notice] = "#{@milestone.title} is now completed!"
+        redirect_to guild_milestone_path(@milestone)
+      else
+        flash[:alert] =
+          "Something went wrong. Please try again later. If this issue persists, please contact the support team."
+      end
+    elsif @milestone.completed == false
+      if @milestone.save
+        flash[:notice] = "#{@milestone.title} is activated!"
+        redirect_to guild_milestone_path(@milestone)
+      else
+        flash[:alert] =
+          "Something went wrong. Please try again later. If this issue persists, please contact the support team."
+      end
+    end
   end
 
   private
