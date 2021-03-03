@@ -1,5 +1,5 @@
 class GuildsController < ApplicationController
-  before_action :set_guild, only: %i[show edit update destroy]
+  before_action :set_guild, only: %i[show edit update destroy manage]
   def index
     @guilds = policy_scope(Guild)
   end
@@ -35,6 +35,8 @@ class GuildsController < ApplicationController
       render :edit
     end
   end
+
+  def manage; end
 
   private
 

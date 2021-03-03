@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :guilds do
     resources :milestones
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
+
+    member do
+      get "manage"
+    end
   end
 
 end
