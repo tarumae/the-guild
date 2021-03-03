@@ -51,6 +51,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    @guild = Guild.find(params[:guild_id])
     authorize @post
   end
   
