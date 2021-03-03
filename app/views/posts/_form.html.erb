@@ -1,7 +1,7 @@
-<%= simple_form_for(@post) do |f| %>
-<div>
-  <span>Description: </span>
-  <%= f.input :description, label: false %>
+<div class="container">
+  <%= simple_form_for [@guild, @post] do |f| %>
+    <h1>Description: </h1>
+    <%= f.input :description, label: false %>
+    <%= f.button :submit, class: "btn btn-flat"%>
+  <% end %>
 </div>
-<%= f.button :submit, class: "btn btn-flat"%>
-<% end %>
