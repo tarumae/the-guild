@@ -1,3 +1,5 @@
-<% @guilds.each do |guild| %>
-  <p><%= guild.name %></p>
-<% end %>
+<div class="container">
+  <% @guilds.each do |guild| %>
+    <%= link_to guild.name, guild_path(guild), class: "dashboard-guild-list", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"  %>
+  <% end %>
+</div>
