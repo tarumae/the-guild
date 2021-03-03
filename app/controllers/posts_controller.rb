@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       flash[:notice] = "Post successfully created!"
-      redirect_to guild_posts_path(@guild) 
+      redirect_to guild_path(@guild) 
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
       render :new
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to guild_posts_path(@post.guild)
+      redirect_to guild_path(@post.guild)
     else
       render :edit
     end
@@ -44,13 +44,14 @@ class PostsController < ApplicationController
     @guild = @post.guild
     @post.destroy
     flash[:notice] = "Post successfully destroyed!"
-    redirect_to guild_posts_path(@post.guild)
+    redirect_to guild_path(@post.guild)
   end
 
   private
 
   def set_post
     @post = Post.find(params[:id])
+    @guild = Guild.find(params[:guild_id])
     authorize @post
   end
   
