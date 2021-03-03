@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_112724) do
+ActiveRecord::Schema.define(version: 2021_03_02_171720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "guild_users", force: :cascade do |t|
+  create_table "guildmemberships", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "guild_id", null: false
     t.boolean "admin", default: false
     t.boolean "banned", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["guild_id"], name: "index_guild_users_on_guild_id"
-    t.index ["user_id"], name: "index_guild_users_on_user_id"
+    t.index ["guild_id"], name: "index_guildmemberships_on_guild_id"
+    t.index ["user_id"], name: "index_guildmemberships_on_user_id"
   end
 
   create_table "guilds", force: :cascade do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_112724) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "guild_users", "guilds"
-  add_foreign_key "guild_users", "users"
+  add_foreign_key "guildmemberships", "guilds"
+  add_foreign_key "guildmemberships", "users"
   add_foreign_key "guilds", "users"
   add_foreign_key "milestones", "guilds"
   add_foreign_key "posts", "guilds"

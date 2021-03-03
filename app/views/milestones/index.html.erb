@@ -1,0 +1,9 @@
+<% @milestones.each do |milestone| %>
+  <% if milestone.completed == false %>
+    <%= milestone.title %>
+    <%= milestone.guild.name %>
+    <%= milestone.description %>
+    <%= milestone.deadline %>
+    <%= milestone.reward %>
+  <% end %>
+<% end %>

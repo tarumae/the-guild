@@ -5,20 +5,19 @@ class PostPolicy < ApplicationPolicy
     end
   end
 
-  def edit?  
-    record.user == user #  || user.guild_user.admin? 
+  def edit?
+    record.user == user #  || user.guildmembership.admin?
   end
 
   def update?
-    record.user == user # || user.guild_user.admin?
+    record.user == user # || user.guildmembership.admin?
   end
 
   def destroy?
-    record.user == user # || user.guild_user.admin?
+    record.user == user # || user.guildmembership.admin?
   end
 
   def new?
     false
   end
-  
 end
