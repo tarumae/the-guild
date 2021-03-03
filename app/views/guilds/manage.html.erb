@@ -1,7 +1,6 @@
 <div class="container">
   <h1>This is the manage page for <%= @guild.name %></h1>
-  <% if policy(@guild).edit? %>
-    <%= link_to "Edit guild details", edit_guild_path(@guild) %>
-  <% end %>
-  <p>Things to add: Ability to make another user an admin, ban users, invite users, delete the guild(only if there are no guild members, deny deletion even for owner if there are guild members associated with this guild)</p>
+  <p><%= link_to "Edit guild details", edit_guild_path(@guild) %></p>
+  <p><%= link_to "Delete the guild", guild_path(@guild), method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"}, error: "Something went wrong. Please make sure the guild has no members before trying again. If this issue persists, please contact us for help." %></p>
+  <p>Things to add: Ability to make another user an admin, ban users, invite users</p>
 </div>
