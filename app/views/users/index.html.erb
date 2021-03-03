@@ -1,0 +1,5 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <p><%= link_to "Invite #{user.email}", guild_guildmemberships_path(@guild, user: user), method: :post, remote: false %></p>
+  <% end %>
+</div>

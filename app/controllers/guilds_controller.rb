@@ -16,7 +16,7 @@ class GuildsController < ApplicationController
     @guild.user = current_user
     authorize @guild
     if @guild.save
-      flash[:notice] = "Guild successfully created!"
+      flash[:notice] = "#{@guild.name} successfully created!"
       redirect_to guild_path(@guild)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
@@ -28,7 +28,7 @@ class GuildsController < ApplicationController
 
   def update
     if @guild.update(guild_params)
-      flash[:notice] = "Guild successfully updated!"
+      flash[:notice] = "#{@guild.name} successfully updated!"
       redirect_to guild_path(@guild)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
