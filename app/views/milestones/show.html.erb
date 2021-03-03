@@ -17,3 +17,9 @@
     <%="status : #{@milestone.title} is activated"%>
   <% end %>
 </div>
+
+<div>
+  <%= link_to guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"} do %>
+  🗑
+  <% end %>
+</div>
