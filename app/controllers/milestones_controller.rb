@@ -25,7 +25,7 @@ before_action :set_milestone, only: :show
   end
 
   def show
-    @tasks = current_user.guild.milestone.tasks
+    @tasks = @milestone.tasks
   end
 
   private
