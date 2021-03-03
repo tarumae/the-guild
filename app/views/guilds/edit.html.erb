@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Editing <%= @guild.name %></h1>
+
+  <%= simple_form_for @guild do |f| %>
+    <%= f.input :name, error: "A guild must have a name between 3 and 60 characters long." %>
+    <%= f.input :description %>
+    <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES %>
+    <%= f.submit %>  
+  <% end %>
+</div>
