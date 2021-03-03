@@ -14,10 +14,20 @@ class GuildPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user || record.guildmemberships.where(user: user, admin: true).present?
+    check_admin?
   end
 
   def manage?
+    check_admin?
+  end
+
+  def destroy?
+    check_admin?
+  end
+
+  private
+
+  def check_admin?
     record.user == user || record.guildmemberships.where(user: user, admin: true).present?
   end
 end

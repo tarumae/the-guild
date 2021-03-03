@@ -38,6 +38,18 @@ class GuildsController < ApplicationController
 
   def manage; end
 
+  def destroy
+    if @guild.guildmemberships.empty?
+      if @guild.destroy
+        flash[:notice] = "#{@guild.name} has successfully been deleted"
+        redirect_to guilds_path
+      end
+    else
+      flash[:alert] = "Can not delete a guild that has members. Please remove all the members and try again."
+      render :manage
+    end
+  end
+
   private
 
   def set_guild
