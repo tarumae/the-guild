@@ -1,0 +1,12 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="card-user">
+      <img class="avatar-large" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" />
+      <div class="card-user-infos">
+        <h2><%= user.first_name unless nil? %> <%= user.last_name unless nil? %> </h2>
+        <h3><%= "Nickname: #{user.nickname}" unless user.nickname.nil? %></h3>
+      </div>
+      <%= link_to "Invite", guild_guildmemberships_path(@guild, user: user), method: :post, class: "btn btn-success invite-btn" %>
+    </div>
+  <% end %>
+</div>

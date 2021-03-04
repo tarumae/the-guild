@@ -2,5 +2,15 @@
   <h1>This is the manage page for <%= @guild.name %></h1>
   <p><%= link_to "Edit guild details", edit_guild_path(@guild) %></p>
   <p><%= link_to "Delete the guild", guild_path(@guild), method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %></p>
+  <div class="btn" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn invite-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Invite Members
+    </button>
+    <div class="dropdown-menu" style="border-radius: 10px; margin-top: 10px;" aria-labelledby="btnGroupDrop1">
+      <%= form_tag guild_users_path(@guild), method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Enter name, nickname or email", style: "width: 500px; border-radius: 10px; margin: 20px;" %>
+      <% end %>
+    </div>
+  </div>
   <p>Things to add: Ability to make another user an admin, ban users, invite users</p>
 </div>

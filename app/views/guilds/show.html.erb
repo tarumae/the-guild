@@ -14,11 +14,10 @@
       <li class="nav-item">
         <a class="nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
       </li>
-      <li class="nav-item">
         <% if policy(@guild).manage? %>
-          <%= link_to "Manage Guild", manage_guild_path(@guild) %>
+          <li class="nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
         <% end %>
-      </li>
+      
     </ul>
   </div>
 
