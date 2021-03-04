@@ -1,18 +1,22 @@
 <h1><%= @milestone.title %></h1>
 <p><%= @milestone.description %></p>
 
-<% @tasks.each do |task| %>
-  <%= task.title %>
-  <%= task.user.email %>
-  <%= task.description %>
-<% end %>
+<div>
+  <% @tasks.each do |task| %>
+    <div>title: <%= task.title %></div>
+    <div>description: <%= task.description %></div>
+    <div>member: <%= task.user.email %></div>
+  <% end %>
+</div>
 
-<%= simple_form_for [@milestone, @task] do |f| %>
-  <%= f.input :title, error: "A task must have a name more than 3 characters long." %>
-  <%= f.input :description %>
-  <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
-  <%= f.submit %>
-<% end %>
+<div>
+  <%= simple_form_for [@milestone, @task] do |f| %>
+    <%= f.input :title, error: "A task must have a name more than 3 characters long." %>
+    <%= f.input :description %>
+    <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
+    <%= f.submit %>
+  <% end %>
+</div>
 
 <%= link_to "Completed", guild_milestone_path(@milestone, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
 <%= link_to "Activate", guild_milestone_path(@milestone, completed: false), method: :patch, class: "btn btn-danger ml-4" %>

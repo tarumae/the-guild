@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     authorize @task
       if @task.save
         flash[:notice] = "Task successfully created!"
-        redirect_to guild_milestone_path(@milestone)
+        redirect_to guild_milestone_path(@milestone.guild, @milestone)
       else
         flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
       end
