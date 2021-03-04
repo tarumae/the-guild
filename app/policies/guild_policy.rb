@@ -10,7 +10,7 @@ class GuildPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user || record.guildmemberships.where(user: user).present?
+    record.user == user || record.guildmemberships.where(user: user, banned: false).present?
   end
 
   def update?

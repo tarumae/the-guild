@@ -8,4 +8,8 @@ class GuildmembershipPolicy < ApplicationPolicy
   def create?
     record.guild.user == user
   end
+
+  def update?
+    record.guild.user == user || record.guild.guildmemberships.where(user: user, admin: true).present?
+  end
 end

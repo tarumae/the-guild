@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :guilds do
     resources :milestones
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
-    resources :guildmemberships, only: [:create]
+    resources :guildmemberships, only: [:create, :index, :update]
     resources :users, only: [:index]
     member do
       get "manage"
