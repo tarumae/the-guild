@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :guildmemberships
   has_many :guilds
   has_many :member_guilds, through: :guildmemberships, source: :guild
+  has_one_attached :photo
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
