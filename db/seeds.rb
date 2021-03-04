@@ -17,11 +17,11 @@ User.destroy_all
 
 puts "Creating new users..."
 
-jihye = User.new(email: "jihye@theguild.fun", password: "testtest")
-daniele = User.new(email: "daniele@theguild.fun", password: "testtest")
-tom = User.new(email: "tom@theguild.fun", password: "testtest")
-john = User.new(email: "john@theguild.fun", password: "testtest")
-jane = User.new(email: "jane@theguild.fun", password: "testtest")
+jihye = User.new(first_name: "Jihye", last_name: "Kang", nickname: "Ji", email: "jihye@theguild.fun", password: "testtest")
+daniele = User.new(first_name: "Daniele", last_name: "Argenti", nickname: "Dan", email: "daniele@theguild.fun", password: "testtest")
+tom = User.new(first_name: "Toomas", last_name: "Arumae", nickname: "Tom", email: "tom@theguild.fun", password: "testtest")
+john = User.new(first_name: "John", last_name: "Smith", nickname: "Johnny", email: "john@theguild.fun", password: "testtest")
+jane = User.new(first_name: "Jane", last_name: "Smith", nickname: "Jan", email: "jane@theguild.fun", password: "testtest")
 
 puts "Creating new guilds..."
 

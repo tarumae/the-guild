@@ -10,7 +10,6 @@ class Guild < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximum: 60 }
 
   def members
-    guild_members << user
+    (guild_members + [user]).flatten
   end
-  
 end
