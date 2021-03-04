@@ -1,0 +1,57 @@
+.card-user {
+  overflow: hidden;
+  height: 80px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  max-width: 30vw;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.card-user img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+
+.card-user h2, h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  max-width: 20vw;
+}
+
+.card-user h3 {
+  font-size: 12px;
+}
+
+.card-user p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-user .card-user-infos {
+  padding: 16px;
+}
+
+.card-user-infos {
+  width: 100%;
+}
+
+.invite-btn {
+  margin-right: 10px;
+  background-color: #5E548E;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  transition: 0.3s;
+  &:hover {
+    background-color: #BE95C4;
+    color: black;
+  }
+}

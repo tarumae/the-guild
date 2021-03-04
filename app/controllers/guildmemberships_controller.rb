@@ -11,6 +11,6 @@ class GuildmembershipsController < ApplicationController
     else
       flash[:alert] = "Can not invite. User has already been invited to the guild"
     end
-    redirect_to guild_users_path(@guild)
+    redirect_to manage_guild_path(@guild)
   end
 end

@@ -16,7 +16,6 @@
       </li>
         <% if policy(@guild).manage? %>
           <li class="nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
-          <li class="nav-item"><%= link_to "Invite users to guild", guild_users_path(@guild), class: "nav-link" %></li>
         <% end %>
       
     </ul>
