@@ -1,11 +1,48 @@
 <h1><%= @milestone.title %></h1>
 <p><%= @milestone.description %></p>
 
+  <div class="container">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+      Add new task
+    </button>
+  </div>
+
+  <div id="form" class="modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title">New Task Form</h1>
+          </div>
+          <div class="modal-body">
+              <%= simple_form_for [@milestone, @task] do |f| %>
+                <%= f.input :title, error: "A task must have a name more than 3 characters long." %>
+                <%= f.input :description %>
+                <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
+                <%= f.submit %>
+              <% end %>
+            <%= link_to "back", guild_milestone_path(@milestone) %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<div>
 <% @tasks.each do |task| %>
-  <%= task.title %>
-  <%= task.user %>
-  <%= task.description %>
+  <div class="" style="background-color: yellow; margin: 15px;">
+    <div>title: <%= task.title %></div>
+    <div>description: <%= task.description %></div>
+    <div>member: <%= task.user.email %></div>
+    <p><%= task.completed ? "Task complete" : "Task in progress" %> </p>
+    <% if task.completed %>
+      <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn btn-danger ml-4" %>
+    <% else %>
+      <%= link_to "Mark as compolete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn btn-primary ml-4" %>
+    <% end %>
+
+  </div>
 <% end %>
+
+
 
 <%= link_to "Completed", guild_milestone_path(@milestone, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
 <%= link_to "Activate", guild_milestone_path(@milestone, completed: false), method: :patch, class: "btn btn-danger ml-4" %>

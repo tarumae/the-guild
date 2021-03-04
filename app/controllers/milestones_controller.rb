@@ -8,6 +8,7 @@ before_action :set_milestone, only: [:show, :update, :destroy]
   def new
     @milestone = Milestone.new
     @guild = Guild.find(params[:guild_id])
+    @milestone.guild = @guild
     authorize @milestone
   end
 
@@ -25,6 +26,10 @@ before_action :set_milestone, only: [:show, :update, :destroy]
   end
 
   def show
+    @task = Task.new
+    @milestone = Milestone.find(params[:id])
+    @guild = Guild.find(params[:guild_id])
+    @task.milestone = @milestone
     @tasks = @milestone.tasks
   end
 
