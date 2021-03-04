@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :guilds do
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
+    resources :guildmemberships, only: [:create, :index, :update]
     resources :milestones
-    resources :guildmemberships, only: [:create]
     resources :users, only: [:index]
     member do
       get "manage"
