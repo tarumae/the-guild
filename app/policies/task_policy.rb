@@ -6,10 +6,10 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user || record.milestone.guild.guildmemberships.where(user: user, admin: true).present?
+    record.milestone.guild.user == user || record.milestone.guild.guildmemberships.where(user: user, admin: true).present?
   end
 
   def update?
-    record.user == user || record.milestone.guild.guildmemberships.where(user: user).present?
+    record.milestone.guild.user == user || record.milestone.guild.guildmemberships.where(user: user).present?
   end
 end

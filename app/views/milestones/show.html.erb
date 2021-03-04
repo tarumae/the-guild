@@ -44,8 +44,8 @@
 
 
 
-<%= link_to "Completed", guild_milestone_path(@milestone, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
-<%= link_to "Activate", guild_milestone_path(@milestone, completed: false), method: :patch, class: "btn btn-danger ml-4" %>
+<%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
+<%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn btn-danger ml-4" %>
 
 <div>
   <% if @milestone.completed %>
