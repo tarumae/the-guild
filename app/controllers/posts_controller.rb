@@ -12,6 +12,8 @@ class PostsController < ApplicationController
     @guild = Guild.find(params[:guild_id])
     @post.guild = @guild
     authorize @post
+    # username = @post.user.username (nickname)
+    # name = @post.user.name
   end
   
   def create
