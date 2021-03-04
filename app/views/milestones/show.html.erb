@@ -20,23 +20,28 @@
                 <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
                 <%= f.submit %>
               <% end %>
+            <%= link_to "back", guild_milestone_path(@milestone) %>
           </div>
       </div>
     </div>
   </div>
 
 <div>
-  <% @tasks.each do |task| %>
+<% @tasks.each do |task| %>
+  <div class="" style="background-color: yellow; margin: 15px;">
     <div>title: <%= task.title %></div>
     <div>description: <%= task.description %></div>
     <div>member: <%= task.user.email %></div>
-    <%= simple_form_for [@milestone, @task] do |f| %>
-      <%= f.input :completed, as: :boolean, input_html: { class: "toggle" } %>
+    <p><%= task.completed ? "Task complete" : "Task in progress" %> </p>
+    <% if task.completed %>
+      <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn btn-danger ml-4" %>
+    <% else %>
+      <%= link_to "Mark as compolete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn btn-primary ml-4" %>
     <% end %>
-    <%= link_to "done", milestone_task_path(task, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
-    <%= link_to "in progress", milestone_task_path(task, completed: false), method: :patch, class: "btn btn-danger ml-4" %>
-  <% end %>
-</div>
+
+  </div>
+<% end %>
+
 
 
 <%= link_to "Completed", guild_milestone_path(@milestone, completed: true), method: :patch, class: "btn btn-primary ml-4" %>
