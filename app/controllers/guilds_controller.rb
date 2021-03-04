@@ -58,6 +58,6 @@ class GuildsController < ApplicationController
   end
 
   def guild_params
-    params.require(:guild).permit(:name, :description, :category)
+    params.require(:guild).permit(:name, :description, :category, :photo)
   end
 end

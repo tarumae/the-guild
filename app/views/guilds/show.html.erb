@@ -1,5 +1,10 @@
-
+<%# :width=>1920, :height=>300, %>
 <div class="banner" style="background-image: url(https://via.placeholder.com/1920x300)">
+  <% if @guild.photo.attached? %>
+    <%= cl_image_tag(@guild.photo.key, crop: :fill) %>
+  <% else %>
+    <img src="https://via.placeholder.com/1920x300" alt="">
+  <% end %>
   <h1><%= @guild.name %></h1>
 </div>
 <div class="row">
