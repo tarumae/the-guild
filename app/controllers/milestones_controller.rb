@@ -1,13 +1,14 @@
 class MilestonesController < ApplicationController
-before_action :set_milestone, only: [:show, :update, :destroy]
+  before_action :set_milestone, only: [:show, :update, :destroy]
+
   def index
     @milestones = policy_scope(Milestone)
   end
 
-
   def new
     @milestone = Milestone.new
     @guild = Guild.find(params[:guild_id])
+    @milestone.guild = @guild
     authorize @milestone
   end
 
@@ -25,6 +26,10 @@ before_action :set_milestone, only: [:show, :update, :destroy]
   end
 
   def show
+    @task = Task.new
+    @milestone = Milestone.find(params[:id])
+    @guild = Guild.find(params[:guild_id])
+    @task.milestone = @milestone
     @tasks = @milestone.tasks
   end
 
@@ -35,7 +40,7 @@ before_action :set_milestone, only: [:show, :update, :destroy]
     if @milestone.completed
       if @milestone.save
         flash[:notice] = "#{@milestone.title} is now completed!"
-        redirect_to guild_milestone_path(@milestone)
+        redirect_to guild_milestone_path(@guild, @milestone)
       else
         flash[:alert] =
           "Something went wrong. Please try again later. If this issue persists, please contact the support team."
@@ -43,7 +48,7 @@ before_action :set_milestone, only: [:show, :update, :destroy]
     elsif @milestone.completed == false
       if @milestone.save
         flash[:notice] = "#{@milestone.title} is activated!"
-        redirect_to guild_milestone_path(@milestone)
+        redirect_to guild_milestone_path(@guild, @milestone)
       else
         flash[:alert] =
           "Something went wrong. Please try again later. If this issue persists, please contact the support team."
