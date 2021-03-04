@@ -10,5 +10,4 @@ class User < ApplicationRecord
   def all_guilds
     guilds + member_guilds
   end
-
 end
