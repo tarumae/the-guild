@@ -14,11 +14,10 @@
       <li class="nav-item">
         <a class="nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
       </li>
-      <li class="nav-item">
         <% if policy(@guild).manage? %>
-          <%= link_to "Manage Guild", manage_guild_path(@guild) %>
+          <li class="nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
         <% end %>
-      </li>
+      
     </ul>
   </div>
 
@@ -28,14 +27,22 @@
     </div>
     <div class="tab-content" id="guildNavbarContent">
       <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
-        <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
-          <div class="avatar-picture">
-            <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
+        <% @guild.posts.each do |post| %>
+          <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+            
+            <div class="avatar-picture">
+              <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
+            </div>
+            <div class="post-content">
+              <p style="margin-bottom: 0px; margin-left: 30px;"> <%= post.content %></p>
+              <%# <% if @post.user == current_user %> 
+              <%= link_to "Edit", edit_guild_post_path(@guild, post) %>
+              <%= link_to "Delete", guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"} %>
+              <%# <% end %>
+            </div>
           </div>
-          <div class="post-content">
-            <p style="margin-bottom: 0px; margin-left: 30px;">This is a post. This tab will house all posts. Need logic here to display all the posts relevant to this specific guild. </p>
-          </div>
-        </div>
+          <br>
+        <% end %>
       </div>
       <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
         <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">

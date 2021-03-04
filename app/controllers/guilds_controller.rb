@@ -16,7 +16,7 @@ class GuildsController < ApplicationController
     @guild.user = current_user
     authorize @guild
     if @guild.save
-      flash[:notice] = "Guild successfully created!"
+      flash[:notice] = "#{@guild.name} successfully created!"
       redirect_to guild_path(@guild)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
@@ -28,7 +28,7 @@ class GuildsController < ApplicationController
 
   def update
     if @guild.update(guild_params)
-      flash[:notice] = "Guild successfully updated!"
+      flash[:notice] = "#{@guild.name} successfully updated!"
       redirect_to guild_path(@guild)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
@@ -37,6 +37,18 @@ class GuildsController < ApplicationController
   end
 
   def manage; end
+
+  def destroy
+    if @guild.guildmemberships.empty?
+      if @guild.destroy
+        flash[:notice] = "#{@guild.name} has successfully been deleted"
+        redirect_to guilds_path
+      end
+    else
+      flash[:alert] = "Can not delete a guild that has members. Please remove all the members and try again."
+      render :manage
+    end
+  end
 
   private
 
