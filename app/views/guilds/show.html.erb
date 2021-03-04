@@ -17,7 +17,9 @@
         <% if policy(@guild).manage? %>
           <li class="nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
         <% end %>
-      
+      <li class="nav-item btn btn-success">
+        <%= link_to "Create post", new_guild_post_path(@guild)  %>
+      </li>
     </ul>
   </div>
 
