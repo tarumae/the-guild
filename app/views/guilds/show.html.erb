@@ -1,11 +1,10 @@
 <%# :width=>1920, :height=>300, %>
-<div class="banner" style="background-image: url(https://via.placeholder.com/1920x300)">
   <% if @guild.photo.attached? %>
-    <%= cl_image_tag(@guild.photo.key, crop: :fill) %>
+    <div class="banner" style="background-image: url(<%= cl_image_path(@guild.photo.key, crop: :fill) %>)">
   <% else %>
-    <img src="https://via.placeholder.com/1920x300" alt="">
+    <div class="banner" style="background-image: url(https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg); background-size: cover; width: 100%;">
   <% end %>
-  <h1><%= @guild.name %></h1>
+  <h1 style= "color: white; text-shadow: 2px 2px 3px black;"><%= @guild.name %></h1>
 </div>
 <div class="row">
   <div class="show-navbar">
