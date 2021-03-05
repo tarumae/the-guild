@@ -24,6 +24,9 @@
       <li class="show-nav-item">
         <%= link_to "Create post", new_guild_post_path(@guild)  %>
       </li>
+      <li class="show-nav-item">
+        <%= link_to "Active Milestones", guild_milestones_path(@guild)  %>
+      </li>
     </ul>
   </div>
 
@@ -72,9 +75,9 @@
   <div class="guild-memberships">
     <h4>Guild Members</h4>
     <ul>
-      <li><%= @guild.user.email %></li>
+      <li><%= @guild.user.full_name %></li>
       <% @guild.guildmemberships.each do |guildmembership| %>
-      <li><%= guildmembership.user.email %></li>
+      <li><%= guildmembership.user.full_name %></li>
       <% end %>
     </ul>
   </div>
