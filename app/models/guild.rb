@@ -4,6 +4,7 @@ class Guild < ApplicationRecord
   has_many :guildmemberships
   has_many :guild_members, through: :guildmemberships, source: :user
   has_many :milestones
+  has_one_attached :photo # check with Lenny
 
   CATEGORIES = %w[Family Work Gaming Sports Education General]
   validates :category, presence: true, inclusion: { in: CATEGORIES }
