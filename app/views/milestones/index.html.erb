@@ -1,9 +1,15 @@
-<% @milestones.each do |milestone| %>
-  <% if milestone.completed == false %>
-    <%= milestone.title %>
-    <%= milestone.guild.name %>
-    <%= milestone.description %>
-    <%= milestone.deadline %>
-    <%= milestone.reward %>
+<div class="container milestone-container">
+  <% @milestones.each do |milestone| %>
+    <% if milestone.completed == false %>
+      <div class="milestone-card justify-content-between">
+        <div class="milestone-card-infos">
+          <h2><%= milestone.title %></h2>
+          <h3>Deadline: <%= milestone.deadline %></h3>
+        </div>
+          <p><%= milestone.description %></p>
+          <p style="margin-right: 10px;"><%= link_to "Show more", guild_milestone_path(milestone.guild, milestone)  %></p>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
