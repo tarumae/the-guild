@@ -2,7 +2,7 @@ class MilestonesController < ApplicationController
   before_action :set_milestone, only: [:show, :update, :destroy]
 
   def index
-    @milestones = policy_scope(Milestone)
+    @milestones = policy_scope(Milestone).where(guild: params[:guild_id])
   end
 
   def new

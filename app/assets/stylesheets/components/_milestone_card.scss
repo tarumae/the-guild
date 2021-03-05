@@ -1,0 +1,35 @@
+.milestone-card {
+  overflow: hidden;
+  height: 80px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  max-width: 30vw;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+
+.milestone-card h2, h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  max-width: 20vw;
+}
+
+.milestone-card h3 {
+  font-size: 12px;
+}
+
+.milestone-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.milestone-card .milestone-card-infos {
+  padding: 16px;
+}
