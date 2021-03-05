@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def all_guilds
     guilds + member_guilds
   end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
