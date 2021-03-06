@@ -1,5 +1,22 @@
 .guild-memberships {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .guild-member-header {
+    margin: 2rem 0;
+    color: #0f295f;
+  }
+}
+
+.guild-members {
+  width: 90%;
+  ul {
+    list-style: none;
+  }
+  li {
+    margin: 2rem 0;
+  }
 }
 
 #guildNavbar {
