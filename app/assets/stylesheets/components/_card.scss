@@ -31,9 +31,11 @@
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   z-index: 2;
   h1{
+    font-weight: bold;
+    opacity: 0.9;
     margin-top: 50px;
     text-align: center;
-    color: #233356;
+    color: #271D63;
   }
   .bottom-shadow{
     height: 7px;
@@ -48,13 +50,13 @@
   }
 }
 .guild {
-  background: rgba( 255, 255, 255, 0.45 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 7.5px );
-  -webkit-backdrop-filter: blur( 7.5px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  color: #0f295f;
+background: rgba( 255, 255, 255, 0.2 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 7.5px );
+-webkit-backdrop-filter: blur( 7.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+color: #271D63;
   margin: 2rem;
   height: 300px;
   &:hover {
@@ -80,7 +82,7 @@
 }
 
 .guild-info{
-  color: #0f295f;
+  color: #233356;
   margin: 10px;
   .guild-info1{
     display: flex;
