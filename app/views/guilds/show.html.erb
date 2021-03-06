@@ -1,82 +1,87 @@
 <%# :width=>1920, :height=>300, %>
-  <% if @guild.photo.attached? %>
-    <div class="banner" style="background-image: url(<%= cl_image_path(@guild.photo.key, crop: :fill) %>)">
-  <% else %>
-    <div class="banner" style="background-image: url(https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg); background-size: cover; width: 100%;">
-  <% end %>
-  <h1 style= "color: white; text-shadow: 2px 2px 3px black;"><%= @guild.name %></h1>
-</div>
-<div class="show-container">
-  <div class="show-navbar">
-    <ul class="nav show-nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
-      <li class="show-nav-item">
-        <a class="show-nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;">All posts</a>
-      </li>
-      <li class="show-nav-item">
-        <a class="show-nav-link" id="picture-posts-tab" data-toggle="tab" href="#picture-posts" role="tab" aria-controls="picture-posts" aria-selected="false" style="border: none;">Pictures</a>
-      </li>
-      <li class="show-nav-item">
-        <a class="show-nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
-      </li>
+<div class="glass">
+  <div class="show-container">
+    <div class="show-navbar">
+      <h4 class="show-nav-name"><%= @guild.name %></h4>
+      <div class="show-nav-img">
+        <% if @guild.photo.attached? %>
+         <%= cl_image_tag(@guild.photo.key, crop: :fill) %>
+        <% else %>
+          <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg" alt="">
+        <% end %>
+      </div>
+      <ul class="nav show-nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
+        <li class="show-nav-item">
+          <a class="show-nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;">All posts</a>
+        </li>
+        <li class="show-nav-item">
+          <a class="show-nav-link" id="picture-posts-tab" data-toggle="tab" href="#picture-posts" role="tab" aria-controls="picture-posts" aria-selected="false" style="border: none;">Pictures</a>
+        </li>
+        <li class="show-nav-item">
+          <a class="show-nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
+        </li>
+        <li class="show-nav-item">
+          <%= link_to "Create post", new_guild_post_path(@guild)  %>
+        </li>
+        <li class="show-nav-item">
+          <%= link_to "Active Milestones", guild_milestones_path(@guild)  %>
+        </li>
         <% if policy(@guild).manage? %>
           <li class="show-nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
         <% end %>
-      <li class="show-nav-item">
-        <%= link_to "Create post", new_guild_post_path(@guild)  %>
-      </li>
-      <li class="show-nav-item">
-        <%= link_to "Active Milestones", guild_milestones_path(@guild)  %>
-      </li>
-    </ul>
-  </div>
+      </ul>
+    </div>
 
-  <div class="content" style="margin-top: 50px;">
-    <div class="tab-content" id="guildNavbarContent">
-      <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
-        <% @guild.posts.each do |post| %>
+    <div class="content" style="margin-top: 50px;">
+      <div class="tab-content" id="guildNavbarContent">
+        <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
+          <% @guild.posts.each do |post| %>
+            <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+              <div class="avatar-picture">
+                <img class="avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%;" />
+              </div>
+              <div class="post-content mt-4 ml-4">
+                <p style="font-size: 10px; color: black; margin: 0;"><%= post.user.full_name %></p>
+                <p style="margin-bottom: 0px; margin-left: 30px;"> <%= post.content %></p>
+                <%# <% if @post.user == current_user %>
+                <%= link_to "Edit", edit_guild_post_path(@guild, post), style: "font-size: 10px;" %>
+                <%= link_to "Delete", guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 10px;" %>
+                <%# <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
           <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
             <div class="avatar-picture">
-              <img class="avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%;" />
+              <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
             </div>
-            <div class="post-content mt-4 ml-4">
-              <p style="font-size: 10px; color: black; margin: 0;"><%= post.user.full_name %></p>
-              <p style="margin-bottom: 0px; margin-left: 30px;"> <%= post.content %></p>
-              <%# <% if @post.user == current_user %>
-              <%= link_to "Edit", edit_guild_post_path(@guild, post), style: "font-size: 10px;" %>
-              <%= link_to "Delete", guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 10px;" %>
-              <%# <% end %>
+            <div class="post-content">
+              <p style="margin-bottom: 0px; margin-left: 30px;">Pictures. Going to need logic here to display all posts that have pictures in them and have been posted to this specific guild. </p>
             </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
-        <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
-          <div class="avatar-picture">
-            <img src="https://via.placeholder.com/50x50" alt="" style="border-radius: 50%;" />
-          </div>
-          <div class="post-content">
-            <p style="margin-bottom: 0px; margin-left: 30px;">Pictures. Going to need logic here to display all posts that have pictures in them and have been posted to this specific guild. </p>
           </div>
         </div>
-      </div>
-      <div class="tab-pane fade" id="video-posts" role="tabpanel" aria-labelledby="video-posts-tab">
-        <div class="post" style="display: flex;align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
-          <iframe class="ml-3" src="https://player.vimeo.com/video/332808813" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          <div class="post-content">
-            <p style="margin-bottom: 0px; margin-left: 30px;">Videos. Going to need logic here to display all posts that have videos in them and have been posted to this specific guild. </p>
+        <div class="tab-pane fade" id="video-posts" role="tabpanel" aria-labelledby="video-posts-tab">
+          <div class="post" style="display: flex;align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
+            <iframe class="ml-3" src="https://player.vimeo.com/video/332808813" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <div class="post-content">
+              <p style="margin-bottom: 0px; margin-left: 30px;">Videos. Going to need logic here to display all posts that have videos in them and have been posted to this specific guild. </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="guild-memberships">
-    <h4>Guild Members</h4>
-    <ul>
-      <li><%= @guild.user.full_name %></li>
-      <% @guild.guildmemberships.each do |guildmembership| %>
-      <li><%= guildmembership.user.full_name %></li>
-      <% end %>
-    </ul>
+    <div class="guild-memberships">
+      <h4>Guild Members</h4>
+      <ul>
+        <li><%= @guild.user.full_name %></li>
+        <% @guild.guildmemberships.each do |guildmembership| %>
+        <li><%= guildmembership.user.full_name %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
+<div class="circle1"></div>
+<div class="circle2"></div>

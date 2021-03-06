@@ -1,25 +1,49 @@
 .show-navbar {
-  max-width: 15vw;
-  margin: 50px auto;
-  text-align: center;
-  background: rgba( 255, 255, 255, 0.25 );
+  flex: 1;
+  background: rgba( 255, 255, 255, 0.8 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  padding: 20px 30px;
-  margin-left: 50px;
-  a {
+  border-radius: 10px;
+}
+
+.show-nav-item {
+  display: flex;
+  margin: 2rem 0;
+  align-items: center;
+  a{
     text-decoration: none;
-    color: white;
-    &:hover {
-      text-decoration: none;
-      font-weight: bold;
+    &:hover{
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      background: #c2e59c;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #64b3f4, #c2e59c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
   }
 }
 
-.show-nav-item {
-  padding: 10px 0;
+.show-nav-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 }
+
+.show-nav-img{
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 100%;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: rgba( 255, 255, 255, 0.8 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+  }
+}
+
