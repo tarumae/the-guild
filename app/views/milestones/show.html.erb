@@ -1,28 +1,3 @@
-  <div class="container milestone-container">
-  <div class="milestone-header">
-    <h1><%= @milestone.title %></h1>
-    <p><%= @milestone.description %></p>
-    <div class="container">
-      <button type="button" class="btn-milestone" data-toggle="modal" data-target="#form">
-        Add new task
-      </button>
-    </div>
-    <div>
-      <% if @milestone.completed %>
-        <%="status : #{@milestone.title} is completed"%>
-      <% elsif @milestone.completed == false %>
-        <%="status : #{@milestone.title} is activated"%>
-      <% end %>
-    </div>
-
-    <div>
-      <%= link_to guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone ml-4" do %>
-      destroy
-      <% end %>
-    </div>
-  </div>
-
-
   <div id="form" class="modal fade">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -42,27 +17,52 @@
     </div>
   </div>
 
-<div>
-<% @tasks.each do |task| %>
-  <div class="task-container">
-    <div>title: <%= task.title %></div>
-    <div>description: <%= task.description %></div>
-    <div>member: <%= task.user.email %></div>
-    <p><%= task.completed ? "Task complete" : "Task in progress" %> </p>
-    <% if task.completed %>
-      <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn-milestone ml-4" %>
-    <% else %>
-      <%= link_to "Mark as compolete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone ml-4" %>
-    <% end %>
+<div class="milestone-main">
+  <div class="milestone-header">
+    <h1><%= @milestone.title %></h1>
+    <p><%= @milestone.description %></p>
+    <div>
+      <% if @milestone.completed %>
+        <%="status : #{@milestone.title} is completed"%>
+      <% elsif @milestone.completed == false %>
+        <%="status : #{@milestone.title} is activated"%>
+      <% end %>
+    </div>
 
+    <div>
+      <%= link_to guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone ml-4" do %>
+      destroy
+      <% end %>
+    </div>
   </div>
-<% end %>
 
 
+  <div class="task-container">
+    <div class="new-task-box">
+      <img src="https://blush.design/api/download?shareUri=EqOeLfC45&w=800&h=800&fm=png" alt="">
+      <button type="button" class="btn-new-task" data-toggle="modal" data-target="#form">
+        Add new task
+      </button>
+    </div>
+    <% @tasks.each do |task| %>
+      <div class="task-box">
+        <div class="task-box-avatar">
+          <img class="task-avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%; width: 3rem;" />
+        </div>
+        <div><%= task.user.email %></div>
+        <div>Task: <%= task.title %></div>
+        <div><%= task.description %></div>
+        <p>Status: <%= task.completed ? "Task complete" : "Task in progress" %> </p>
+        <% if task.completed %>
+          <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn-milestone ml-4" %>
+        <% else %>
+          <%= link_to "Mark as compolete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone ml-4" %>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone ml-4" %>
 <%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone ml-4" %>
-</div>
-
-<div class="circle3"></div>
-
