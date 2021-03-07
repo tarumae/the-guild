@@ -33,7 +33,7 @@
   <div class="content" style="margin-top: 50px;">
     <div class="tab-content" id="guildNavbarContent">
       <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
-        <% @guild.posts.each do |post| %>
+        <% @guild.posts.order(created_at: :desc).each do |post| %>
           <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 50vw; max-width:50vw;">
             <div class="avatar-picture">
               <img class="avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%;" />
@@ -41,10 +41,12 @@
             <div class="post-content mt-4 ml-4">
               <p style="font-size: 10px; color: black; margin: 0;"><%= post.user.full_name %></p>
               <p style="margin-bottom: 0px; margin-left: 30px;"> <%= post.content %></p>
-              <%# <% if @post.user == current_user %>
-              <%= link_to "Edit", edit_guild_post_path(@guild, post), style: "font-size: 10px;" %>
-              <%= link_to "Delete", guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 10px;" %>
-              <%# <% end %>
+              <% if post.user == current_user %>
+                <%= link_to "Edit", edit_guild_post_path(@guild, post), style: "font-size: 10px;" %>
+              <% end %>
+              <% if policy(post).destroy? %>
+                <%= link_to "Delete", guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 10px;" %>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -74,7 +76,9 @@
     <ul>
       <li><%= @guild.user.full_name %></li>
       <% @guild.guildmemberships.each do |guildmembership| %>
-      <li><%= guildmembership.user.full_name %></li>
+        <% if guildmembership.status == "approved" %>
+          <li><%= guildmembership.user.full_name %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

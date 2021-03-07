@@ -29,6 +29,7 @@ jane = User.new(first_name: "Jane", last_name: "Smith", nickname: "Jan", email: 
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, nickname: Faker::Movies::HowToTrainYourDragon.dragon, email: Faker::Internet.email, password: "testtest")
 end
 
+User.create(first_name: "Sharon", last_name: "Smith", nickname: "Shar", email: "sharon@theguild.fun", password: "testtest")
 
 puts "Creating new guilds..."
 
@@ -37,9 +38,8 @@ nottheguild = Guild.create!(name: "Not The Guild", description: "Test guild", us
 
 puts "Creating membership associations for the created guilds..."
 
-Guildmembership.create(user: jihye, guild: theguild, admin: true)
-Guildmembership.create(user: daniele, guild: theguild, admin: true)
-Guildmembership.create(user: john, guild: theguild)
-
-Guildmembership.create(user: jane, guild: nottheguild)
+Guildmembership.create(user: jihye, guild: theguild, admin: true, status: "approved")
+Guildmembership.create(user: daniele, guild: theguild, admin: true, status: "approved")
+Guildmembership.create(user: john, guild: theguild, status: "approved")
+Guildmembership.create(user: jane, guild: nottheguild, status: "approved")
 

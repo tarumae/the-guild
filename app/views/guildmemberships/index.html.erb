@@ -1,18 +1,21 @@
 <div class="container">
   <h1>These are current guild members:</h1>
   <% @memberships.each do |membership| %>
-    <div class="card-user">
-      <img class="avatar-large" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" />
-      <div class="card-user-infos">
-        <h2><%= membership.user.first_name unless nil? %> <%= membership.user.last_name unless nil? %> </h2>
-        <h3><%= "Nickname: #{membership.user.nickname}" unless membership.user.nickname.nil? %></h3>
+    <% if membership.status == "approved" && membership.user != current_user %>
+      <div class="card-user">
+        <img class="avatar-large" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" />
+        <div class="card-user-infos">
+          <h2><%= membership.user.first_name unless nil? %> <%= membership.user.last_name unless nil? %> </h2>
+          <h3><%= "Nickname: #{membership.user.nickname}" unless membership.user.nickname.nil? %></h3>
+        </div>
+        <% if membership.guild.user == current_user %> 
+          <%= link_to "Add as Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
+          <%= link_to "Remove as Admin" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.admin?%>
+        <% end %>
+        <%= link_to "Ban" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :patch, class: "btn btn-success invite-btn" unless membership.banned?%>
+        <%= link_to "Unban" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.banned?%>
+        <%= link_to "Kick" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :delete, class: "btn btn-success invite-btn" unless membership.admin? %>
       </div>
-      <% if membership.guild.user == current_user %> 
-        <%= link_to "Add as Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
-        <%= link_to "Remove as Admin" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.admin?%>
-      <% end %>
-      <%= link_to "Ban" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :patch, class: "btn btn-success invite-btn" unless membership.banned?%>
-      <%= link_to "Unban" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.banned?%>
-    </div>
+    <% end %>
   <% end %>
 </div>

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :guilds do
     resources :posts, only: [:new, :create, :edit, :update, :destroy]
-    resources :guildmemberships, only: [:create, :index, :update]
+    resources :guildmemberships, only: [:create, :index, :update, :destroy] do
+      member do
+        patch "status"
+      end
+    end
     resources :milestones
     resources :users, only: [:index]
     member do
