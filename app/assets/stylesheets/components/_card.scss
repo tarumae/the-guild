@@ -35,14 +35,15 @@
     opacity: 0.9;
     margin-top: 50px;
     text-align: center;
-    color: #271D63;
+    color: black;
+    opacity: 0.8;
   }
   .bottom-shadow{
     height: 7px;
     width: 20rem;
-    background: linear-gradient(to right, #7AA1D2, #CC95C0);
+    background: linear-gradient(to right, white);
     opacity: 0.3;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.5 );
     backdrop-filter: blur( 10px );
     -webkit-backdrop-filter: blur( 7.5px );
     border-radius: 10px;

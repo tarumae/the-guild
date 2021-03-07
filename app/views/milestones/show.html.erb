@@ -19,23 +19,26 @@
 
 <div class="milestone-main">
   <div class="milestone-header">
-    <h1><%= @milestone.title %></h1>
-    <p><%= @milestone.description %></p>
-    <div>
-      <% if @milestone.completed %>
-        <%="status : #{@milestone.title} is completed"%>
-      <% elsif @milestone.completed == false %>
-        <%="status : #{@milestone.title} is activated"%>
-      <% end %>
+    <div class="milestone-box1">
+      <h1><%= @milestone.title %></h1>
+      <h6><i class="fab fa-slack-hash"></i> <%= @milestone.description %></h6>
     </div>
-
-    <div>
-      <%= link_to guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone ml-4" do %>
-      destroy
-      <% end %>
+    <div class="milestone-box2">
+      <div class= "milestone-btns">
+        <%= link_to "Destroy", guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone"%>
+        <%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone" %>
+        <%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone" %>
+      </div>
+      <div>
+        <% if @milestone.completed %>
+          <%="Status : #{@milestone.title} is completed"%>
+        <% elsif @milestone.completed == false %>
+          <%="Status : #{@milestone.title} is activated"%>
+        <% end %>
+      </div>
     </div>
   </div>
-
+  <div class="m-bottom-shadow"></div>
 
   <div class="task-container">
     <div class="new-task-box">
@@ -46,23 +49,31 @@
     </div>
     <% @tasks.each do |task| %>
       <div class="task-box">
-        <div class="task-box-avatar">
-          <img class="task-avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%; width: 3rem;" />
+        <div class="task-box1">
+          <div class="task-box-avatar">
+            <img class="task-avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%; width: 3rem;" />
+          </div>
+          <div class="task-name"><%= task.user.full_name%></div>
         </div>
-        <div><%= task.user.email %></div>
-        <div>Task: <%= task.title %></div>
-        <div><%= task.description %></div>
-        <p>Status: <%= task.completed ? "Task complete" : "Task in progress" %> </p>
-        <% if task.completed %>
-          <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn-milestone ml-4" %>
-        <% else %>
-          <%= link_to "Mark as compolete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone ml-4" %>
-        <% end %>
-
+        <div class="task-box2">
+          <div class="task-title"><i class="fas fa-thumbtack"></i> Task: <%= task.title %></div>
+          <div class="task-description"><i class="fas fa-tasks"></i> <%= task.description %></div>
+          <div class="task-status">
+            <% if task.completed %>
+             <p style="color: #b2402c"><i class="fas fa-check-square"></i> Task complete</p>
+            <% else %>
+              <p><i class="fas fa-exclamation-circle"></i> Task in progress</p>
+            <% end %>
+          </div>
+          <div class="task-status-btn">
+            <% if task.completed %>
+              <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn-milestone" %>
+            <% else %>
+              <%= link_to "Mark as complete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
-
-<%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone ml-4" %>
-<%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone ml-4" %>
