@@ -1,3 +1,4 @@
+  <div class="container milestone-container">
   <div class="milestone-header">
     <h1><%= @milestone.title %></h1>
     <p><%= @milestone.description %></p>
@@ -61,4 +62,7 @@
 
 <%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone ml-4" %>
 <%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone ml-4" %>
+</div>
+
+<div class="circle3"></div>
 

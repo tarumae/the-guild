@@ -12,3 +12,16 @@
   padding: 5px;
   color: black;
 }
+
+.circle3{
+  background: linear-gradient(to right bottom, rgba( 255, 255, 255, 0.2 ), rgba( 255, 255, 255, 0.1 ));
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 50%;
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  height: 12rem;
+  width: 12rem;
+}
