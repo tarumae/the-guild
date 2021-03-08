@@ -1,12 +1,54 @@
 .task-container {
   min-height: 100vh;
-  width: 80%;
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 350px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .task-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .task-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .task-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .task-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .task-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 1450px) {
+  .task-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .task-box {
+  align-self: center;
+  justify-self: center;
   width: 250px;
   height: 300px;
   background: rgba( 255, 255, 255, 0.9 );
@@ -28,6 +70,8 @@
 }
 
 .new-task-box {
+  align-self: center;
+  justify-self: center;
   width: 250px;
   height: 300px;
   background: rgba( 255, 255, 255, 0.9 );

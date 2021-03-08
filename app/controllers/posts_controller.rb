@@ -6,15 +6,6 @@ class PostsController < ApplicationController
     @guild = Guild.find(params[:guild_id])
     @posts = @guild.posts.order(created_at: :desc)
   end
-
-  def new
-    @post = Post.new
-    @guild = Guild.find(params[:guild_id])
-    @post.guild = @guild
-    authorize @post
-    # username = @post.user.username (nickname)
-    # name = @post.user.name
-  end
   
   def create
     @guild = Guild.find(params[:guild_id])
@@ -23,12 +14,12 @@ class PostsController < ApplicationController
     authorize @post
     @post.user = current_user
     if @post.save
-      flash[:notice] = "Post successfully created!"
       redirect_to guild_path(@guild) 
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
-      render :new
+      redirect_to guild_path(@guild)
     end
+    
   end
   
   def edit
