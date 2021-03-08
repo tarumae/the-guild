@@ -22,6 +22,7 @@
     <div class="milestone-box1">
       <h1><%= @milestone.title %></h1>
       <h6><i class="fab fa-slack-hash"></i> <%= @milestone.description %></h6>
+      <h6><i class="far fa-gem"></i> <%= @milestone.reward %></h6>
     </div>
     <div class="milestone-box2">
       <div class= "milestone-btns">
@@ -38,9 +39,10 @@
       </div>
     </div>
   </div>
-  <div class="m-bottom-shadow"></div>
-
-  <div class="task-container">
+<div class="progress" style="width: 60vw; height: 15px; border-radius: 10px;">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: <%= @milestone.tasks.where(completed: true).present? ? 100 / @milestone.tasks.count * @milestone.tasks.where(completed: true).count : 0 %>%;" > <%= @milestone.tasks.where(completed: true).present? ? 100 / @milestone.tasks.count * @milestone.tasks.where(completed: true).count : 0 %>%</div>
+</div>
+  <div class="task-container" style="width: 60vw;">
     <div class="new-task-box">
       <img src="https://blush.design/api/download?shareUri=EqOeLfC45&w=800&h=800&fm=png" alt="">
       <button type="button" class="btn-new-task" data-toggle="modal" data-target="#form">
