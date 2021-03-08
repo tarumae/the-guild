@@ -1,5 +1,30 @@
-<div class="container guild-list-container">
-  <% @guilds.each do |guild| %>
-    <%= link_to guild.name, guild_path(guild), class: "dashboard-guild-list", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( #{guild.photo.attached? ? cl_image_path(guild.photo.key) : 'https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg'})"  %>
-  <% end %>
+<div class="main-glass">
+  <div class="main">
+    <h1>Your Guilds</h1>
+    <div class="bottom-shadow"></div>
+    <div class="guild-list-container">
+      <% @guilds.each do |guild| %>
+        <div class="guild">
+          <%= link_to guild_path(guild) do %>
+            <div class="guild-img">
+              <% if guild.photo.attached? %>
+               <%= cl_image_tag(guild.photo.key, crop: :fill) %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg" alt="">
+              <% end %>
+            </div>
+            <div class="guild-info">
+              <div class="guild-info1">
+                <h4><%= guild.name %></h4>
+              </div>
+              <div class="guild-info2">
+                 <p><%= guild.category %></p>
+                 <p><%= guild.description %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+  </div>
 </div>
