@@ -25,21 +25,25 @@
 }
 
 .show-nav-item {
+  width: 80%;
   display: flex;
-  margin: 1rem 0;
-  align-items: center;
-  a{
-    text-decoration: none;
-    color: #0f295f;
-    font-size: 20px;
+  margin: 7px 0;
+  justify-content: flex-start;
+  padding: 1rem;
     &:hover{
       color: white;
-      padding: 1rem 2rem;
       border-radius: 15px;
       background: #CC95C0;  /* fallback for old browsers */
       background: -webkit-linear-gradient(to right, #7AA1D2, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
       background: linear-gradient(to right, #7AA1D2, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+  i {
+    padding-right: 1rem;
+  }
+  a{
+    text-decoration: none;
+    color: #0f295f;
+    font-size: 20px;
   }
 }
 
