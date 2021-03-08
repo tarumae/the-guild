@@ -1,7 +1,23 @@
 <div class="container">
   <h1 class="header"><%= @guild.name %></h1>
-  <div id="delete" role="group">
-    <button id="btnGroupDrop1" type="button" class="btn invite-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+</div>
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614960078/edit_image_i6n4gw.jpg')"> 
+    <p><%= link_to "Manage access", guild_guildmemberships_path(@guild), class: "btn manage-btn" %></p>
+  </div>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://www.iexpats.com/wp-content/uploads/2019/03/milestone.jpg')">
+    <p><%= link_to "Create milestone", new_guild_milestone_path(@guild), class: "btn manage-btn" %></p>
+  </div>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3c9XO27gpKZgHtMl9f8NgzywwMNl1VyN_Pw&usqp=CAU')">
+    <p><%= link_to "Edit guild details", edit_guild_path(@guild), class: "btn manage-btn" %></p>
+  </div>
+</div>
+<div class="manage-btn-container">
+  <div>
+    <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
+  </div>
+  <div role="group">
+    <button id="btnGroupDrop1" type="button" class="btn manage-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Invite Members
     </button>
     <div class="dropdown-menu" style="border-radius: 10px; margin-top: 10px;" aria-labelledby="btnGroupDrop1">
@@ -10,20 +26,7 @@
       <% end %>
     </div>
   </div>
-</div>
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614960078/edit_image_i6n4gw.jpg')"> 
-    <p><%= link_to "Manage access", guild_guildmemberships_path(@guild), class: "btn invite-btn" %></p>
+  <div>
+    <%= link_to "Delete the guild", guild_path(@guild), class: "btn manage-btn", method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %>
   </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.iexpats.com/wp-content/uploads/2019/03/milestone.jpg')">
-    <p><%= link_to "Create milestone", new_guild_milestone_path(@guild), class: "btn invite-btn" %></p>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3c9XO27gpKZgHtMl9f8NgzywwMNl1VyN_Pw&usqp=CAU')">
-    <p><%= link_to "Edit guild details", edit_guild_path(@guild), class: "btn invite-btn" %></p>
-  </div>
-</div>
-<div id="delete">
-  <p><%= link_to "Delete the guild", guild_path(@guild), class: "btn invite-btn", method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %></p>
 </div>
