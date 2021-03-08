@@ -1,4 +1,3 @@
-
 <div class="invites">
   <% if current_user.guildmemberships.where(status: "pending").present? %>
     <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
@@ -10,13 +9,37 @@
     <% end %>
   <% end %>
 </div>
-<div class="container guild-list-container">
-  <% @guilds.each do |guild| %>
-    <% if guild.guildmemberships.where(user: current_user, status: "approved").present? || guild.user == current_user  %>
-    <div style="position: relative;">
-      <%= link_to guild.name, guild_path(guild), class: "dashboard-guild-list", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( #{guild.photo.attached? ? cl_image_path(guild.photo.key) : 'https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg'})"%>
-      <%= link_to "Leave", guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 30px; top: 10px; padding: 5px;", class: "btn btn-danger", remote: true unless guild.user == current_user %>
+
+<div class="main-glass">
+  <div class="main">
+    <h1>Your Guilds</h1>
+    <div class="bottom-shadow"></div>
+    <div class="guild-list-container">
+      <% @guilds.each do |guild| %>
+       <% if guild.guildmemberships.where(user: current_user, status: "approved").present? || guild.user == current_user  %>
+        <div class="guild">
+          <%= link_to guild_path(guild) do %>
+            <div class="guild-img">
+              <% if guild.photo.attached? %>
+               <%= cl_image_tag(guild.photo.key, crop: :fill) %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg" alt="">
+              <% end %>
+            </div>
+            <div class="guild-info">
+              <div class="guild-info1">
+                <h4><%= guild.name %></h4>
+              </div>
+              <div class="guild-info2">
+                 <p><%= guild.category %></p>
+                 <p><%= guild.description %></p>
+              </div>
+              <%= link_to "Leave", guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 30px; top: 10px; padding: 5px;", class: "btn btn-danger", remote: true unless guild.user == current_user %>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+        <% end %>
     </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
