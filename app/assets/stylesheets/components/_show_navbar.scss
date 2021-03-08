@@ -7,9 +7,21 @@
   border-radius: 10px 0 0 10px;
   color: #0f295f;
 }
-
+.show-nav-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  .show-nav-name {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+  }
 .show-nav-tabs {
   margin-bottom: 2rem;
+  margin-left: 3rem;
+  align-items: flex-start;
 }
 
 .show-nav-item {
@@ -31,11 +43,6 @@
   }
 }
 
-.show-nav-name {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
 
 .show-nav-img{
   margin: 2rem 0;
