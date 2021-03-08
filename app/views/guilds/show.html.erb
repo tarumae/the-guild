@@ -32,11 +32,10 @@
           <% end %>
         </ul>
       </div>
-
       <div class="content" style="margin-top: 50px;">
         <div class="tab-content" id="guildNavbarContent">
           <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
-            <% @guild.posts.each do |post| %>
+            <% @guild.posts.order(created_at: :desc).each do |post| %>
               <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 45vw; max-width:45vw;">
                 <div class="avatar-picture ml-3">
                   <img class="avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%;" />
@@ -46,12 +45,14 @@
                   <p style="margin-bottom: 0px; margin-left: 30px;"> <%= post.content %></p>
                   <div class="post-edit">
                     <div>
-                      <%# <% if @post.user == current_user %>
-                      <%= link_to edit_guild_post_path(@guild, post), style: "font-size: 12px;" do%>
-                      <i class="fas fa-edit"></i>
+                      <% if post.user == current_user %>
+                        <%= link_to edit_guild_post_path(@guild, post), style: "font-size: 12px;" do%>
+                        <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 12px;" do %>
-                      <i class="fas fa-trash-alt"></i>
+                      <% if policy(post).destroy? %>
+                        <%= link_to guild_post_path(@guild, post), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, style: "font-size: 12px;" do %>
+                        <i class="fas fa-trash-alt"></i>
+                        <% end %>
                       <% end %>
                       <%# <% end %>
                     </div>
@@ -59,6 +60,7 @@
                 </div>
               </div>
             <% end %>
+
           </div>
           <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
             <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 45vw; max-width:45vw;">
@@ -91,14 +93,16 @@
           <ul>
             <li><%= @guild.user.full_name %></li>
             <% @guild.guildmemberships.each do |guildmembership| %>
-            <li><%= guildmembership.user.full_name %></li>
+              <% if guildmembership.status == "approved" %>
+                <li><%= guildmembership.user.full_name %></li>
+              <% end %>
             <% end %>
           </ul>
         </div>
       </div>
     </div>
   </div>
-</div>
+
 
 <div class="circle1"></div>
 <div class="circle2"></div>

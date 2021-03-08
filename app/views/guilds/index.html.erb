@@ -1,9 +1,22 @@
+<div class="invites">
+  <% if current_user.guildmemberships.where(status: "pending").present? %>
+    <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
+      <p style="margin-top: 10px;">You have been invited to</p>
+      <p><strong><%= membership.guild.name %></strong></p>
+      <p>by <%= membership.guild.user.full_name %></p>
+      <%= link_to "Accept", status_guild_guildmembership_path(membership.guild, membership, status: "approved"), class:"btn btn-success", method: :patch, remote: true %>
+      <%= link_to "Reject", guild_guildmembership_path(membership.guild, membership), class:"btn btn-danger", method: :delete, remote: true%>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="main-glass">
   <div class="main">
     <h1>Your Guilds</h1>
     <div class="bottom-shadow"></div>
     <div class="guild-list-container">
       <% @guilds.each do |guild| %>
+       <% if guild.guildmemberships.where(user: current_user, status: "approved").present? || guild.user == current_user  %>
         <div class="guild">
           <%= link_to guild_path(guild) do %>
             <div class="guild-img">
@@ -21,7 +34,9 @@
                  <p><%= guild.category %></p>
                  <p><%= guild.description %></p>
               </div>
+              <%= link_to "Leave", guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 30px; top: 10px; padding: 5px;", class: "btn btn-danger", remote: true unless guild.user == current_user %>
             </div>
+          <% end %>
           <% end %>
         </div>
         <% end %>
