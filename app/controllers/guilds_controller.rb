@@ -4,7 +4,9 @@ class GuildsController < ApplicationController
     @guilds = policy_scope(Guild)
   end
 
-  def show; end
+  def show
+    @post = Post.new
+  end
 
   def new
     @guild = Guild.new

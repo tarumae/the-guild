@@ -4,7 +4,12 @@
   backdrop-filter: blur( 10.0px );
   -webkit-backdrop-filter: blur( 10.0px );
   border-radius: 10px;
-  margin-bottom: 2rem;
+  margin: 1rem auto;
+  display: flex; 
+  align-items: center; 
+  justify-content: left;
+  min-width: 45vw; 
+  max-width:45vw;
   .post-content {
     width: 85%;
   }
@@ -24,12 +29,19 @@
 
 #new_post {
   background: rgba( 255, 255, 255, 0.65 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding: 30px;
-  margin-top: 50px;
-  text-align: center;
+}
+
+.customized-modal {
+  border-radius: 10px;
+}
+
+.post-button {
+  border-top: 1px solid lightgrey;
+  width: 100%;
+  background-color: #CC95C0;
 }
