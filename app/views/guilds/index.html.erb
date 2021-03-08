@@ -40,11 +40,13 @@
         </div>
           <% end %>
         <% end %>
-        <div id="empty-guild" >
-          <%= link_to  new_guild_path(@guild) do %>
-            <i class="fas fa-plus-circle"> Create a new guild</i> 
-          <% end %>
-        </div>       
+        <%= link_to new_guild_path(@guild) do %>
+          <div id="empty-guild">
+            <div>
+              <i class="fas fa-plus-circle"> Create a new guild</i> 
+            </div>
+          </div>       
+        <% end %>
     </div>
   </div>
 </div>
