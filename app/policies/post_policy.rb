@@ -14,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user # || user.guildmembership.admin?
+    record.user == user || record.guild.user == user
   end
 
   def new?

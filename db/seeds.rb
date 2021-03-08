@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'faker'
+
 puts "Cleaning database..."
 
 Task.destroy_all
@@ -22,6 +24,11 @@ daniele = User.new(first_name: "Daniele", last_name: "Argenti", nickname: "Dan",
 tom = User.new(first_name: "Toomas", last_name: "Arumae", nickname: "Tom", email: "tom@theguild.fun", password: "testtest")
 john = User.new(first_name: "John", last_name: "Smith", nickname: "Johnny", email: "john@theguild.fun", password: "testtest")
 jane = User.new(first_name: "Jane", last_name: "Smith", nickname: "Jan", email: "jane@theguild.fun", password: "testtest")
+
+15.times do
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, nickname: Faker::Movies::HowToTrainYourDragon.dragon, email: Faker::Internet.email, password: "testtest")
+end
+
 
 puts "Creating new guilds..."
 
