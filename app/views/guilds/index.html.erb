@@ -37,11 +37,14 @@
               <%= link_to "Leave", guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 30px; top: 10px; padding: 5px;", class: "btn btn-danger", remote: true unless guild.user == current_user %>
             </div>
           <% end %>
-          <% end %>
         </div>
-      <%# <div class="guild">
-      </div> %>
+          <% end %>
         <% end %>
+        <div id="empty-guild" >
+          <%= link_to  new_guild_path(@guild) do %>
+            <i class="fas fa-plus-circle"> Create a new guild</i> 
+          <% end %>
+        </div>       
     </div>
   </div>
 </div>
