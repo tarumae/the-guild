@@ -3,7 +3,10 @@
   <div class="show-container">
     <div class="show-box1">
       <div class="show-navbar">
-        <h2 class="show-nav-name"><%= @guild.name %></h2>
+        <div class="show-nav-header">
+          <h2 class="show-nav-name"><%= @guild.name %></h2>
+          <p class="show-nav-description"><%= @guild.description %></p>
+        </div>
         <div class="show-nav-img">
           <% if @guild.photo.attached? %>
            <%= cl_image_tag(@guild.photo.key, crop: :fill) %>
@@ -13,22 +16,29 @@
         </div>
         <ul class="nav show-nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
           <li class="show-nav-item">
-            <a class="show-nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;">All posts</a>
+            <a class="show-nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;"><i class="fas fa-pen"></i>All posts</a>
           </li>
           <li class="show-nav-item">
-            <a class="show-nav-link" id="picture-posts-tab" data-toggle="tab" href="#picture-posts" role="tab" aria-controls="picture-posts" aria-selected="false" style="border: none;">Pictures</a>
+            <a class="show-nav-link" id="picture-posts-tab" data-toggle="tab" href="#picture-posts" role="tab" aria-controls="picture-posts" aria-selected="false" style="border: none;"><i class="fas fa-camera"></i>Pictures</a>
           </li>
           <li class="show-nav-item">
-            <a class="show-nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;">Videos</a>
+            <a class="show-nav-link" id="video-posts-tab" data-toggle="tab" href="#video-posts" role="tab" aria-controls="video-posts" aria-selected="false" style="border: none;"><i class="fas fa-video"></i>Videos</a>
           </li>
           <li class="show-nav-item">
-            <%= link_to "Active Milestones", guild_milestones_path(@guild)  %>
+            <%= link_to guild_milestones_path(@guild)  do %>
+            <i class="fas fa-shapes"></i>Active Milestones
+            <% end %>
           </li>
           <% if policy(@guild).manage? %>
-            <li class="show-nav-item"><%= link_to "Manage Guild", manage_guild_path(@guild), class: "nav-link"%></li>
+            <li class="show-nav-item">
+              <%= link_to manage_guild_path(@guild) do %>
+            <i class="fas fa-cog"></i>Manage Guild
+            <% end %>
+            </li>
           <% end %>
         </ul>
       </div>
+
       <div class="content" style="margin-top: 50px;">
         <div class="tab-content" id="guildNavbarContent">
           <div class="tab-pane fade show active" id="all-posts" role="tabpanel" aria-labelledby="all-posts-tab">
@@ -64,8 +74,8 @@
                 </div>
               </div>
             <% end %>
-
           </div>
+
           <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
             <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 45vw; max-width:45vw;">
               <div class="avatar-picture">
@@ -106,7 +116,6 @@
       </div>
     </div>
   </div>
-
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content customized-modal">
@@ -126,6 +135,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="circle1"></div>
 <div class="circle2"></div>
