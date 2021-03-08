@@ -24,13 +24,13 @@
 
 .manage-btn {
   margin-right: 10px;
-  background-color: #5E548E;
+  background-color: hsla(251, 30%, 74%, 0.58);
   color: white;
   border-radius: 15px;
   transition: 0.3s;
   &:hover {
-    background-color: #BE95C4;
-    color: black;
+    background-color: hsla(207, 18%, 38%, 0.58);
+    color: white;
   }
 }
 
