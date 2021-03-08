@@ -13,6 +13,9 @@
   </div>
 </div>
 <div class="manage-btn-container">
+  <div>
+    <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
+  </div>
   <div role="group">
     <button id="btnGroupDrop1" type="button" class="btn manage-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Invite Members
@@ -23,12 +26,7 @@
       <% end %>
     </div>
   </div>
-  <br>
   <div>
     <%= link_to "Delete the guild", guild_path(@guild), class: "btn manage-btn", method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %>
-  </div>
-  <br>
-  <div>
-    <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
   </div>
 </div>
