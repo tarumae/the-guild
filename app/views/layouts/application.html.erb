@@ -15,7 +15,9 @@
     <div class="page-container">
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
-      <%= yield %>
+      <div class="flex-grow-1">
+        <%= yield %>
+      </div>
       <%= render "shared/footer" %></div>
     </div>
   </body>
