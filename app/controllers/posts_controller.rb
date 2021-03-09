@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     authorize @post
     @post.user = current_user
     if @post.save
+      flash[:notice] = "Post created!."
       redirect_to guild_path(@guild) 
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."

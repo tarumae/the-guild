@@ -141,10 +141,8 @@
       <div class="modal-body">
         <%= simple_form_for [@guild, @post] do |f| %>
           <%= f.rich_text_area :content, label: false %>
-      </div>
-      <div>
-        <%= f.button :submit, "Post", class: "btn post-button"%>
-      <% end %>
+          <%= f.button :submit, "Post", class: "btn post-button mt-3"%>
+        <% end %>
       </div>
     </div>
   </div>
