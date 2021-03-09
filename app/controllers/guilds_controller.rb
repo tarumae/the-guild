@@ -6,6 +6,7 @@ class GuildsController < ApplicationController
 
   def show
     @post = Post.new
+    @posts_with_pictures = @guild.posts.select { |post| post.attachments? }
   end
 
   def new
