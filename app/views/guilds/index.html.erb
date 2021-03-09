@@ -1,5 +1,5 @@
-<div class="invites">
   <% if current_user.guildmemberships.where(status: "pending").present? %>
+    <div class="invites">
     <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
       <p style="margin-top: 10px;">You have been invited to</p>
       <p><strong><%= membership.guild.name %></strong></p>
@@ -7,8 +7,8 @@
       <%= link_to "Accept", status_guild_guildmembership_path(membership.guild, membership, status: "approved"), class:"btn btn-success", method: :patch, remote: true %>
       <%= link_to "Reject", guild_guildmembership_path(membership.guild, membership), class:"btn btn-danger", method: :delete, remote: true%>
     <% end %>
+    </div>
   <% end %>
-</div>
 
 <div class="main-glass">
   <div class="main">

@@ -54,7 +54,11 @@
       <div class="task-box">
         <div class="task-box1">
           <div class="task-box-avatar">
-            <img class="task-avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%; width: 3rem;" />
+            <% if task.user.photo.attached? %>
+              <%= cl_image_tag(task.user.photo.key, crop: :fill, style:"height: 40px; width: 40px;", class: "avatar dropdown-toggle border border-dark", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
           </div>
           <div class="task-name"><%= task.user.full_name%></div>
         </div>
