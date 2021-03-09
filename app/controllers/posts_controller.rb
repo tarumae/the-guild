@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @guild = Guild.find(params[:guild_id])
     @posts = @guild.posts.order(created_at: :desc)
   end
-  
+
   def create
     @guild = Guild.find(params[:guild_id])
     @post = Post.new(post_params)
@@ -14,14 +14,14 @@ class PostsController < ApplicationController
     authorize @post
     @post.user = current_user
     if @post.save
-      redirect_to guild_path(@guild) 
+      redirect_to guild_path(@guild)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
       redirect_to guild_path(@guild)
     end
-    
+
   end
-  
+
   def edit
   end
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @guild = @post.guild
     @post.destroy
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     @guild = Guild.find(params[:guild_id])
     authorize @post
   end
-  
+
 
   def post_params
     params.require(:post).permit(:content, photos: [])

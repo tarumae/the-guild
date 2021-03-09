@@ -57,7 +57,7 @@
                   <% else %>
                    <img class="avatar avatar-lg border border-dark" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png" alt="" style="border-radius: 50%;" />
                   <% end %>
-                  
+
                 </div>
                 <div class="post-content mt-3 ml-4">
                   <p style="font-size: 15px; font-weight: bold; color: #0f295f; margin: 0;"><%= post.user.full_name %> <span style="font-size: 10px; font-weight: lighter; color: rgba(0,0,0,0.5);"><%= post.created_at.strftime("%d/%m/%Y - %H:%M") %></span></p>
@@ -86,10 +86,9 @@
           <div class="tab-pane fade" id="picture-posts" role="tabpanel" aria-labelledby="picture-posts-tab">
             <div class="post" style="display: flex; align-items: center; justify-content: left; min-width: 45vw; max-width:45vw;">
               <div class="post-content">
-                <% @guild.posts.first.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                <% @posts_with_pictures.each do |post| %>
+                <%= post.content %>
                 <% end %>
-                <p style="margin-bottom: 0px; margin-left: 30px;">Pictures. Going to need logic here to display all posts that have pictures in them and have been posted to this specific guild. </p>
               </div>
             </div>
           </div>
