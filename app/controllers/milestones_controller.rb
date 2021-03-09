@@ -3,6 +3,7 @@ class MilestonesController < ApplicationController
 
   def index
     @milestones = policy_scope(Milestone).where(guild: params[:guild_id])
+    @guild = Guild.find(params[:guild_id])
   end
 
   def new
