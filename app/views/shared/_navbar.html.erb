@@ -1,6 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="height: 54px;">
-  <%= link_to "The Guild", guilds_path, class: "navbar-brand mr-0", style: "color: white;" %>
-
+  <div>
+    <%= link_to guilds_path do  %>
+      <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615300198/theguildlogo_e1zpti.png" alt="" style="width: 40px; height: 40px; margin-right: 5px;">
+      <h2 class="navbar-brand" style="color: white;">The Guild</h2>
+    <% end %>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
