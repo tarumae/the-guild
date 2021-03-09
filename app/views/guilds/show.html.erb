@@ -52,7 +52,12 @@
             <% @guild.posts.order(created_at: :desc).each do |post| %>
               <div class="post">
                 <div class="avatar-picture ml-3">
-                  <img class="avatar" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614345377/john_aj1jop.jpg" alt="" style="border-radius: 50%;" />
+                  <% if post.user.photo.attached? %>
+                    <%= cl_image_tag(post.user.photo.key, crop: :fill, gravitate: :face, height: 40, width: 40, class: "avatar avatar-lg border border-dark") %>
+                  <% else %>
+                   <img class="avatar avatar-lg border border-dark" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png" alt="" style="border-radius: 50%;" />
+                  <% end %>
+                  
                 </div>
                 <div class="post-content mt-3 ml-4">
                   <p style="font-size: 15px; font-weight: bold; color: #0f295f; margin: 0;"><%= post.user.full_name %> <span style="font-size: 10px; font-weight: lighter; color: rgba(0,0,0,0.5);"><%= post.created_at.strftime("%d/%m/%Y - %H:%M") %></span></p>
@@ -139,4 +144,4 @@
 
 
 <div class="circle1"></div>
-<div class="circle2"></div>
+<div class="circle2" style="z-index: -1"></div>
