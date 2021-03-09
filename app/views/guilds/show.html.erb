@@ -111,10 +111,18 @@
         </div>
         <div class="guild-members">
           <ul>
-            <li><%= @guild.user.full_name %></li>
+            <% if @guild.user.photo.attached? %>
+              <li><%= cl_image_tag(@guild.user.photo.key, crop: :fill, style:"height: 40px; width: 40px;", class: "avatar dropdown-toggle border border-dark", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %> <%= @guild.user.full_name %></li>
+            <% else %>
+              <li><%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> <%= @guild.user.full_name %></li>
+            <% end %>
             <% @guild.guildmemberships.each do |guildmembership| %>
               <% if guildmembership.status == "approved" %>
-                <li><%= guildmembership.user.full_name %></li>
+                <% if guildmembership.user.photo.attached? %>
+                  <li><%= cl_image_tag(guildmembership.user.photo.key, crop: :fill, style:"height: 40px; width: 40px;", class: "avatar dropdown-toggle border border-dark", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %> <%= guildmembership.user.full_name %></li>
+                <% else %>
+                  <li><%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> <%= guildmembership.user.full_name %></li>
+                <% end %>
               <% end %>
             <% end %>
           </ul>
