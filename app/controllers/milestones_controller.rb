@@ -3,6 +3,7 @@ class MilestonesController < ApplicationController
 
   def index
     @milestones = policy_scope(Milestone).where(guild: params[:guild_id])
+    @guild = Guild.find(params[:guild_id])
   end
 
   def new
@@ -18,7 +19,7 @@ class MilestonesController < ApplicationController
     authorize @milestone
     if @milestone.save
       flash[:notice] = "Milestone successfully created!"
-      redirect_to guild_milestones_path
+      redirect_to guild_milestone_path(@milestone.guild, @milestone)
     else
       flash[:alert] = "Something went wrong, please try again. If this issue persists, please contact us for help."
       render :new
