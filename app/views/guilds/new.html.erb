@@ -1,11 +1,36 @@
 <div class="container">
-  <h1>Create a Guild</h1>
+  <div class="row d-flex align-items-center justify-content-around">
+    <div class="col-xs-12 col-md-6">
+      <div class="form-sign-up">
+  <h2>Create a Guild</h2>
 
   <%= simple_form_for @guild do |f| %>
-    <%= f.input :name, error: "A guild must have a name between 3 and 60 characters long." %>
-    <%= f.input :description %>
-    <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit %>  
+    <div class="input-box">
+      <p>Guild name</p>
+      <%= f.input :name, error: "A guild must have a name between 3 and 60 characters long.", label: false %>
+    </div>
+    <div class="input-box">
+    <p>Description</p>
+      <%= f.input :description, label: false%>
+    </div>
+    <div class="input-box">
+    <p>Category</p>
+      <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES, label: false %>
+    </div>
+    <div class="input-box">
+      <%= f.input :photo, as: :file %>
+    </div>
+    <%= f.button :submit, class: "btn btn-form" %>
   <% end %>
+</div>
+</div>
+<div class="col-xs-12 col-md-4 d-flex align-items-end" style="width: 40vw; height: 35vw; color:#71618e; font-size: 20px;">
+  <div>
+    <p>Make a guild!</p>
+    <p>You can share your thought, photos and set a milestone which can allow you to acheive the goal with your family and friends.</p>
+    <br>
+    <img src="https://blush.design/api/download?shareUri=Y-1Y0hGgn&c=Skin_0%7Ef7d3bb-0.1%7Ec68e80-0.2%7Ef7d3bb-0.3%7E583318-0.4%7Ec68e80&w=800&h=800&fm=png" alt="" style = "width: 400px;">
+  </div>
+</div>
+</div>
 </div>
