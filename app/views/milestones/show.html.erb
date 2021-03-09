@@ -11,7 +11,7 @@
                 <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
                 <%= f.submit %>
               <% end %>
-            <%= link_to "back", guild_milestone_path(@milestone) %>
+            <%= link_to "Back", guild_milestone_path(@milestone) %>
           </div>
       </div>
     </div>
@@ -25,11 +25,13 @@
       <h6><i class="far fa-gem"></i> <%= @milestone.reward %></h6>
     </div>
     <div class="milestone-box2">
-      <div class= "milestone-btns">
-        <%= link_to "Destroy", guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone"%>
-        <%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone" %>
-        <%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone" %>
-      </div>
+      <% if @milestone.guild.user == current_user || @milestone.guild.guildmemberships.where(user: current_user, admin: true).present? %>
+        <div class= "milestone-btns">
+          <%= link_to "Destroy", guild_milestone_path(@milestone), method: :delete, data: {confirm: "Are you sure you wish to delete it?"}, class: "btn-milestone"%>
+          <%= link_to "Completed", guild_milestone_path(@guild, @milestone, completed: true), method: :patch, class: "btn-milestone" %>
+          <%= link_to "Activate", guild_milestone_path(@guild, @milestone, completed: false), method: :patch, class: "btn-milestone" %>
+        </div>
+      <% end %>
       <div style="display: flex; justify-content: center;">
         <% if @milestone.completed %>
           <%="Status : #{@milestone.title} is completed"%>
@@ -73,9 +75,7 @@
             <% end %>
           </div>
           <div class="task-status-btn">
-            <% if task.completed %>
-              <%= link_to "Start task", milestone_task_path(@milestone, task, task: {completed: false}), method: :patch, class: "btn-milestone" %>
-            <% else %>
+            <% if !task.completed && (task.user == current_user || task.milestone.guild.user == current_user) %>
               <%= link_to "Mark as complete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone" %>
             <% end %>
           </div>

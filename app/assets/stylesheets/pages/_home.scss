@@ -8,7 +8,7 @@
     color: #271D63;
     opacity: 0.9;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 46px;
       div:first-child{
         padding: 3rem 0;
         font-size: 70px;
@@ -17,8 +17,13 @@
 }
 
 .landing-btn{
-  .landing-btn1, .landing-btn2{
-    margin: 2rem;
+  margin-top: 30px;
+  .landing-btn1 {
+    margin-right: 2rem;
+  }
+  .landing-btn2
+  {
+    margin-left: 2rem;
   }
   a{
     text-decoration: none;
@@ -49,4 +54,48 @@
 .landing-page3{
   display: flex;
   margin: 5rem 2rem;
+}
+
+.landing-page2-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  width: 38vw;
+  margin-right: 20px;
+  h4 {
+    font-size: 40px;
+    color: #271D63;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+  }
+  p {
+    font-size: 18px;
+    color: #271d639c;
+    opacity: 0.9;
+    line-height: 2rem;
+  }
+}
+
+.landing-page3-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  width: 38vw;
+  margin-left: 20px;
+  h4 {
+    font-size: 40px;
+    color: #271D63;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+  }
+  p {
+    font-size: 18px;
+    color: #271d639c;
+    opacity: 0.9;
+    line-height: 2rem;
+  }
 }
