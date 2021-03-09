@@ -10,7 +10,7 @@
   border-radius:15px;
 }
 
-#guild_photo{
+#guild_photo, #user_photo{
     border-radius: 0;
   }
 
@@ -57,5 +57,12 @@
   a {
     text-decoration: underline;
     color: #271D63;
+  }
+}
+
+.bottom-container{
+   a {
+    text-decoration: none;
+    color: white;
   }
 }
