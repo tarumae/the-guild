@@ -1,5 +1,5 @@
 meta_product_name: "The Guild"
 meta_title: "The Guild - Connect with the ones closest to you"
 meta_description: "The Guild is the new social media in town. The Guild will allow you to stay in touch with your beloved ones and organise events, making daily tasks fun for your kids and much more!"
-meta_image: "the-guild" # should exist in `app/assets/images/`
+meta_image: "the-guild.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
