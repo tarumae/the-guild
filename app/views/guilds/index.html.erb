@@ -1,24 +1,24 @@
-<% if current_user.guildmemberships.where(status: "pending").present? %>
-  <div class="invite-container">
-    <button id="open"><i class="fas fa-envelope"></i></button>
-    <div class="invites" id="invites">
-      <div class="invites-text">
-        <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
-        <p style="margin-top: 10px;">You have been invited to</p>
-        <p><strong><%= membership.guild.name %></strong></p>
-        <p>by <%= membership.guild.user.full_name %></p>
-      </div>
-      <div class="invites-btns">
-      <%= link_to "Accept", status_guild_guildmembership_path(membership.guild, membership, status: "approved"), class:"invite-btn", method: :patch, remote: true %>
-      <%= link_to "Reject", guild_guildmembership_path(membership.guild, membership), class:"invite-btn", method: :delete, remote: true%>
-    <% end %>
-      <button id="close" class="invite-btn"><i class="fas fa-window-close"></i></button>
-      </div>
-    </div>
-  <% end %>
-    </div>
     <div class="main-glass">
-      <div class="main">
+      <div class="main" style="position: relative;">
+        <% if current_user.guildmemberships.where(status: "pending").present? %>
+            <button id="open"><i class="fas fa-envelope"></i></button>
+            <div class="invites" id="invites">
+                    <button id="close">
+                      <i class="fas fa-times"></i>
+                    </button>
+              <div class="invites-text">
+                <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
+                  <p>You have been invited to</p>
+                  <p><strong><%= membership.guild.name %></strong></p>
+                  <p>by <%= membership.guild.user.full_name %></p>
+                  <div class="invite-btns">
+                    <%= link_to "Accept", status_guild_guildmembership_path(membership.guild, membership, status: "approved"), class: "invite-btn notification-btn", style: "padding: 10px 20px; margin-right: 10px;", method: :patch, remote: true  %>
+                    <%= link_to "Reject", guild_guildmembership_path(membership.guild, membership), class:"invite-btn notification-btn", style: "padding: 10px 20px; margin-left: 10px;", method: :delete, remote: true %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
         <h1>Your Guilds</h1>
           <div class="bottom-shadow"></div>
           <div class="guild-list-container">

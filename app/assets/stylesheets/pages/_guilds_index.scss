@@ -8,19 +8,29 @@ overflow-x: hidden;
 #open{
   z-index:4;
   position: absolute;
-  top: 150px;
-  right: 100px;
+  top: 10px;
+  right: 10px;
   border-radius: 50%;
   color: white;
   background: linear-gradient(to right, #4568DC, #B06AB3);
   font-size: 2rem;
   border: none;
   padding: 5px 10px;
+  line-height: revert;
   &:hover{
     background: linear-gradient(to right, #B06AB3, #4568DC);
   }
 }
 
+#close {
+  position: absolute; 
+  top: 5px; 
+  right: 5px; 
+  line-height: 0; 
+  border: none; 
+  color: rgba(0,0,0,0.3); 
+  background-color: #FAF7F8;
+}
 
 .invites {
   z-index: 4;
@@ -31,22 +41,37 @@ overflow-x: hidden;
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   position: absolute;
-  padding: 10px;
-
-  min-width: 20vw;
+  padding: 20px;
+  min-width: 10vw;
   max-width: 20vw;
-  top: 100px;
-  right: 180px;
+  top: 0px;
+  right: 80px;
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  button {
+    font-size: 16px;
+    line-height: 1;
+  }
   .invites-btns{
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    a {
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 .invites.active{
   display: flex;
+}
+
+.invites-text {
+ text-align: center;
+}
+
+.notification-btn {
+  margin-right: 0;
 }
