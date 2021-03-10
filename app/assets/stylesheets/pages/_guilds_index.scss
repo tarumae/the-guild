@@ -5,18 +5,48 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+
 overflow-x: hidden;
 }
 
+#open{
+  z-index:4;
+  position: absolute;
+  top: 150px;
+  right: 100px;
+  border-radius: 50%;
+  color: white;
+  background: linear-gradient(to right, #4568DC, #B06AB3);
+  font-size: 2rem;
+  border: none;
+  padding: 5px 10px;
+  &:hover{
+    background: linear-gradient(to right, #B06AB3, #4568DC);
+  }
+}
+
+
 .invites {
-  background: rgba( 255, 255, 255, 0.15 );
+  z-index: 4;
+  background: rgba( 255, 255, 255, 0.75 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4.5px );
   -webkit-backdrop-filter: blur( 4.5px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   position: absolute;
-  left: 22px;
-  top: 133px;
   padding: 10px;
-  min-width: 12vw;
-  max-width: 12vw;
-  text-align: center;
+
+  min-width: 20vw;
+  max-width: 20vw;
+  top: 100px;
+  right: 180px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .invites-btns{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+.invites.active{
+  display: flex;
 }
