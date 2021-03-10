@@ -130,7 +130,7 @@
             <% else %>
               <li><%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> <i class="fas fa-crown"></i> <%= @guild.user.full_name %></li>
             <% end %>
-            <% @guild.guildmemberships.each do |guildmembership| %>
+            <% @guild.guildmemberships.order(admin: :desc).each do |guildmembership| %>
               <% if guildmembership.status == "approved" %>
                 <% if guildmembership.user.photo.attached? %>
                   <li><%= cl_image_tag(guildmembership.user.photo.key, crop: :fill, style:"height: 40px; width: 40px;", class: "avatar dropdown-toggle border border-dark", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %> <% if guildmembership.admin == true %> <i class="fas fa-crown"></i> <% end %> <%= guildmembership.user.full_name %></li>
