@@ -2,7 +2,7 @@
   <h1 style="text-align: center; margin-top: 20px; margin-bottom: 30px;">These are current guild members:</h1>
   <% if @memberships.map{ |membership| membership.status == "pending" }.include?(true) %>
   <div id="pending-card">
-    <p><i class="far fa-pause-circle"></i> <%= @memberships.reject{ |membership| membership.status != "pending" }.count %> pending invitations...</p>
+    <p style="margin: 0px;"><i class="far fa-pause-circle " style="font-size: larger;"></i> <%= @memberships.reject{ |membership| membership.status != "pending" }.count %> pending invitations...</p>
   </div>
   <% end %>
   <% if !@memberships.empty? && @memberships.map{ |membership| membership.status == "pending" }.include?(false) %>
@@ -19,7 +19,7 @@
             <h3><%= "Nickname: #{membership.user.nickname}" unless membership.user.nickname.nil? %></h3>
           </div>
           <% if membership.guild.user == current_user %> 
-            <%= link_to "Add as Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
+            <%= link_to "Make Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
             <%= link_to "Remove as Admin" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.admin?%>
           <% end %>
           <%= link_to "Ban" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :patch, class: "btn btn-success invite-btn" unless membership.banned?%>
