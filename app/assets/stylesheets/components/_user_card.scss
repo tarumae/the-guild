@@ -10,6 +10,9 @@
   margin: 10px auto;
 }
 
+.user-index-container{
+
+}
 .card-user img {
   height: 80px;
   width: 80px;
@@ -45,13 +48,15 @@
 
 .invite-btn {
   margin-right: 10px;
-  background-color: #5E548E;
+  background: linear-gradient(to right, #4568DC, #B06AB3);
   color: white;
-  border: 1px solid black;
   border-radius: 15px;
   transition: 0.3s;
+  padding: 5px 10px;
+  border: none;
   &:hover {
-    background-color: #BE95C4;
-    color: black;
+    background: linear-gradient(to right, #B06AB3, #4568DC);
+    color: white;
+    text-decoration: none;
   }
 }
