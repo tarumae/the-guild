@@ -8,8 +8,8 @@ overflow-x: hidden;
 #open{
   z-index:4;
   position: absolute;
-  top: 150px;
-  right: 100px;
+  top: 10px;
+  right: 10px;
   border-radius: 50%;
   color: white;
   background: linear-gradient(to right, #4568DC, #B06AB3);
@@ -22,6 +22,15 @@ overflow-x: hidden;
   }
 }
 
+#close {
+  position: absolute; 
+  top: 5px; 
+  right: 5px; 
+  line-height: 0; 
+  border: none; 
+  color: rgba(0,0,0,0.3); 
+  background-color: #FAF7F8;
+}
 
 .invites {
   z-index: 4;
@@ -41,6 +50,7 @@ overflow-x: hidden;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   button {
     font-size: 16px;
     line-height: 1;

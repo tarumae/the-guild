@@ -1,9 +1,9 @@
     <div class="main-glass">
       <div class="main" style="position: relative;">
         <% if current_user.guildmemberships.where(status: "pending").present? %>
-            <button id="open" style="position: absolute; right: 10px; top: 10px;"><i class="fas fa-envelope"></i></button>
-            <div class="invites" id="invites" style="margin: 0 auto;">
-                    <button id="close" style="position: absolute; top: 5px; right: 5px; line-height: 0; border: none; color: rgba(0,0,0,0.3); background-color: #FAF7F8;">
+            <button id="open"><i class="fas fa-envelope"></i></button>
+            <div class="invites" id="invites">
+                    <button id="close">
                       <i class="fas fa-times"></i>
                     </button>
               <div class="invites-text">
