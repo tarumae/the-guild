@@ -7,7 +7,7 @@
   align-items: center;
   max-width: 30vw;
   border-radius: 10px;
-  margin: 10px auto;
+  margin: 30px auto 10px;
 }
 
 .user-index-container{
@@ -44,6 +44,10 @@
 
 .card-user-infos {
   width: 100%;
+}
+
+.card-user-infos h2 {
+  font-size: 1rem;
 }
 
 .invite-btn {

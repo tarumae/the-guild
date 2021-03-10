@@ -34,7 +34,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 30vw;
   border-radius: 10px;
-  margin-top: 150px;
+  margin-top: 125px;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
@@ -43,9 +43,37 @@
   justify-content: center;
 }
 
+#pending-card {
+  overflow: hidden;
+  height: 62px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  max-width: 15vw;
+  border-radius: 10px;
+  margin: 10px auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: 50px;
+}
+
 #bottom-membership-container {
   display: flex;
   justify-content: center;
   margin-top: 50px;
   margin-bottom: 10px;
+}
+
+#card-membership-user {
+  overflow: hidden;
+  height: 80px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  max-width: 30vw;
+  border-radius: 10px;
+  margin: 75px auto 10px;
 }
