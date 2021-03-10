@@ -1,0 +1,41 @@
+.modal-content{
+  color: #271D63;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  background: white;
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.modal-header{
+  display: flex;
+  justify-content: center;
+}
+
+.modal-body
+  .btn{
+      width: 100%;
+    margin-bottom: 20px;
+        text-decoration: none;
+    color: white;
+    font-size: 20px;
+    color: white;
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      background: #4568DC;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    &:hover{
+      background: #4568DC;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4568DC, #B06AB3);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4568DC, #B06AB3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
+
+.modal-back-btn{
+    text-decoration: underline;
+    color: #271D63;
+}

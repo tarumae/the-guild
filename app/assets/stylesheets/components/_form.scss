@@ -1,0 +1,69 @@
+.input-box input{
+  border-radius:15px;
+}
+
+#guild_description{
+  border-radius:15px;
+}
+
+#guild_category, #task_description, #task_user_id{
+  border-radius:15px;
+}
+
+#guild_photo, #user_photo{
+    border-radius: 0;
+  }
+
+.form-sign-up {
+  color: #271D63;
+  background: white;
+  padding: 10px 20px;
+  margin: 100px 0;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  background: rgba( 255, 255, 255, 0.65 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn-form {
+    width: 100%;
+    margin-bottom: 20px;
+        text-decoration: none;
+    color: white;
+    font-size: 20px;
+    color: white;
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      background: #4568DC;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    &:hover{
+      background: #4568DC;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4568DC, #B06AB3);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4568DC, #B06AB3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+  }
+  a {
+    text-decoration: underline;
+    color: #271D63;
+  }
+}
+#milestone_description{
+  border-radius:15px;
+}
+.bottom-container{
+   a {
+    text-decoration: none;
+    color: white;
+  }
+}

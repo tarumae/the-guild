@@ -1,11 +1,26 @@
 <div class="container">
-  <h1>Editing <%= @guild.name %></h1>
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs-12 col-md-6">
+      <div class="form-sign-up">
+  <h2>Editing <%= @guild.name %></h2>
 
   <%= simple_form_for @guild do |f| %>
-    <%= f.input :name, error: "A guild must have a name between 3 and 60 characters long." %>
-    <%= f.input :description %>
-    <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES %>
+    <div class="input-box">
+    <p>Guild name</p>
+    <%= f.input :name, error: "A guild must have a name between 3 and 60 characters long.", label: false %>
+    </div>
+    <div class="input-box">
+    <p>Description</p>
+    <%= f.input :description, label: false %>
+    </div>
+    <div class="input-box">
+    <p>Category</p>
+    <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES, label: false %>
+    </div>
     <%= f.input :photo, as: :file %>
-    <%= f.submit %>  
+    <%= f.button :submit, class: "btn btn-form" %>
   <% end %>
+</div>
+</div>
+</div>
 </div>
