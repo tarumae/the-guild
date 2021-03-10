@@ -6,12 +6,21 @@
           </div>
           <div class="modal-body">
               <%= simple_form_for [@milestone, @task] do |f| %>
-                <%= f.input :title, error: "A task must have a name more than 3 characters long." %>
-                <%= f.input :description %>
-                <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :email, :value_method => :id %>
-                <%= f.submit %>
+                <div class="input-box">
+                <p>Task</p>
+                <%= f.input :title, error: "A task must have a name more than 3 characters long.", label:false %>
+                </div>
+                <div class="input-box">
+                <p>Description</p>
+                <%= f.input :description, label:false %>
+                </div>
+                <div class="input-box">
+                <p>Assign member</p>
+                <%= f.association :user, :as => :select, :collection => @guild.members, :label_method => :full_name, :value_method => :id, label:false %>
+                </div>
+                <%= f.button :submit, class: "btn-form" %>
               <% end %>
-            <%= link_to "Back", guild_milestone_path(@milestone) %>
+            <%= link_to "Back", guild_milestone_path(@milestone), class: "modal-back-btn" %>
           </div>
       </div>
     </div>
