@@ -1,8 +1,18 @@
 <div class="container">
-  <%= simple_form_for [@guild, @post] do |f| %>
-    <h1>Description: </h1>
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs-12 col-md-8">
+      <div class="form-sign-up">
+        <%= simple_form_for [@guild, @post] do |f| %>
+        <div class="d-flex justify-content-center">
+    <h1>Edit post </h1>
+    </div>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.rich_text_area :content, label: false %>
-    <%= f.button :submit, class: "btn btn-flat"%>
+    <div class="m-4 d-flex justify-content-center">
+    <%= f.button :submit, class: "btn btns"%>
+    </div>
   <% end %>
+</div>
+</div>
+</div>
 </div>
