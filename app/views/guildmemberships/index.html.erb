@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 style="text-align: center; margin-top: 20px; margin-bottom: -10px;">These are current guild members:</h1>
+  <h1 style="text-align: center; margin-top: 20px; margin-bottom: 30px;">These are current guild members:</h1>
   <% if !@memberships.empty? %>
     <% @memberships.each do |membership| %>
       <% if membership.status == "approved" && membership.user != current_user %>
@@ -31,9 +31,19 @@
       </div>
   <% end %>
 </div>
-<div class="bottom-container">
+<div id="bottom-membership-container">
   <div>
     <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
+  </div>
+  <div role="group">
+    <button id="btnGroupDrop1" type="button" class="btn manage-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Invite Members
+    </button>
+    <div class="dropdown-menu" style="border-radius: 10px; margin-top: 10px;" aria-labelledby="btnGroupDrop1">
+      <%= form_tag guild_users_path(@guild), method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Enter name, nickname or email", style: "width: 500px; border-radius: 10px; margin: 20px;" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
