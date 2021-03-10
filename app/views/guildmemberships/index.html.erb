@@ -1,6 +1,11 @@
 <div class="container">
   <h1 style="text-align: center; margin-top: 20px; margin-bottom: 30px;">These are current guild members:</h1>
-  <% if !@memberships.empty? %>
+  <% if @memberships.map{ |membership| membership.status == "pending" }.include?(true) %>
+  <div id="pending-card">
+    <p><i class="far fa-pause-circle"></i> <%= @memberships.reject{ |membership| membership.status != "pending" }.count %> pending invitations...</p>
+  </div>
+  <% end %>
+  <% if !@memberships.empty? && @memberships.map{ |membership| membership.status == "pending" }.include?(false) %>
     <% @memberships.each do |membership| %>
       <% if membership.status == "approved" && membership.user != current_user %>
         <div class="card-user">
@@ -23,9 +28,9 @@
         </div>
       <% end %>
     <% end %>
-    <% elsif @memberships.empty? %>
+    <% else %>
       <div id="empty-members-card">
-        Ops, it looks like there are no members currently.
+        Oops, it looks like there are no members currently.
         <br>
         <h1><i class="far fa-sad-cry mt-4"></i></h1>
       </div>
