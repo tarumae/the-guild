@@ -17,5 +17,12 @@
   li {
     margin: 2rem 0;
     font-size: 20px;
+    position: relative;
+    i {
+      position:absolute; 
+      left: 7px; 
+      top: -17px; 
+      color: #f9e279;
+    }
   }
 }
