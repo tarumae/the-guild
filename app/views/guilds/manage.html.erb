@@ -1,24 +1,11 @@
-<div class="container">
+<div class="container manage-container">
   <h1 class="header"><%= @guild.name %></h1>
-</div>
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614960078/edit_image_i6n4gw.jpg')"> 
-    <p><%= link_to "Manage access", guild_guildmemberships_path(@guild), class: "btn manage-btn" %></p>
-  </div>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://www.iexpats.com/wp-content/uploads/2019/03/milestone.jpg')">
-    <p><%= link_to "Create milestone", new_guild_milestone_path(@guild), class: "btn manage-btn" %></p>
-  </div>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3c9XO27gpKZgHtMl9f8NgzywwMNl1VyN_Pw&usqp=CAU')">
-    <p><%= link_to "Edit guild details", edit_guild_path(@guild), class: "btn manage-btn" %></p>
-  </div>
-</div>
-<div class="manage-btn-container">
-  <div>
-    <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
-  </div>
+
+<div class="invite-members-box">
+  <img src="https://blush.design/api/download?shareUri=jeGEeQTNi&c=Hair_0%7E711515_Skin_0%7Ef6cbc3&w=800&h=800&fm=png" alt="" style="width: 100px;">
   <div role="group">
-    <button id="btnGroupDrop1" type="button" class="btn manage-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Invite Members
+    <button id="btnGroupDrop1" type="button" class="btn manage-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Want to invite members?
     </button>
     <div class="dropdown-menu" style="border-radius: 10px; margin-top: 10px;" aria-labelledby="btnGroupDrop1">
       <%= form_tag guild_users_path(@guild), method: :get do %>
@@ -26,7 +13,36 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="cards">
+  <%= link_to guild_guildmemberships_path(@guild), class: "btn manage-button" do %>
+    <div class="card-category">
+      <img src="https://blush.design/api/download?shareUri=lKxKGLG3EP&c=Hair_0%7E711515-0.2%7Effc943-0.3%7Ec38741_Skin_0%7Eecafa3-0.2%7Eecafa3-0.3%7Ef6cbc3&w=800&h=800&fm=png" alt="" style="width:300px;">
+      <p>Manage access</p>
+    </div>
+  <% end %>
+  <%= link_to new_guild_milestone_path(@guild), class: "btn manage-button" do %>
+    <div class="card-category">
+      <img src="https://blush.design/api/download?shareUri=QfVyXZBJBG&c=Hair_0%7E0f0f0f-0.3%7E878787_Skin_0%7E7d4439-0.3%7Ec26e5e&w=800&h=800&fm=png" alt="" style="width:300px;">
+      <p>Create milestone</p>
+    </div>
+  <% end %>
+  <%= link_to edit_guild_path(@guild), class: "btn manage-button" do %>
+    <div class="card-category">
+      <img src="https://blush.design/api/download?shareUri=G_GRKuMym&c=Hair_0%7E9b5120-0.2%7E711515_Skin_0%7Eecafa3-0.2%7Ef6cbc3&w=800&h=800&fm=png" alt="" style="width:300px;">
+      <p>Edit guild details</p>
+    </div>
+  <% end %>
+</div>
+
+<div class="manage-btn-container">
   <div>
-    <%= link_to "Delete the guild", guild_path(@guild), class: "btn manage-btn", method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %>
+    <%= link_to "Back to guild", guild_path(@guild), class: "btn btns" %>
   </div>
+
+  <div>
+    <%= link_to "Delete the guild", guild_path(@guild), class: "btn btns", method: :delete, data: {confirm: "Are you sure you wish to delete the guild?"} %>
+  </div>
+</div>
 </div>
