@@ -63,7 +63,7 @@
     </div>
     <% @tasks.order(created_at: :desc).each do |task| %>
       <div class="task-box">
-        <div class="task-box1">
+        <div class="task-box1" style="margin: 0 auto; text-align: center;">
           <div class="task-box-avatar">
             <% if task.user.photo.attached? %>
               <%= cl_image_tag(task.user.photo.key, crop: :fill, style:"height: 40px; width: 40px;", class: "avatar dropdown-toggle border border-dark", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
@@ -71,11 +71,11 @@
               <%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
           </div>
-          <div class="task-name"><%= task.user.full_name%></div>
+          <div class="task-name" style="margin-bottom: 0px; margin-top: 10px;"><%= task.user.full_name%></div>
         </div>
-        <div class="task-box2">
-          <div class="task-title"><i class="fas fa-thumbtack"></i> Task: <%= task.title %></div>
-          <div class="task-description"><i class="fas fa-tasks"></i> <%= task.description %></div>
+        <div class="task-box2" style="margin-top: 0px; text-align: center;">
+          <div class="task-title" style="margin-bottom: 20px;"><i class="fas fa-thumbtack"></i> Task: <%= task.title %></div>
+          <div class="task-description" style="margin-bottom: 20px;"><i class="fas fa-tasks"></i> <%= task.description %></div>
           <div class="task-status">
             <% if task.completed %>
              <p style="color: #b2402c"><i class="fas fa-check-square"></i> Task complete</p>
@@ -85,7 +85,7 @@
           </div>
           <div class="task-status-btn">
             <% if !task.completed && (task.user == current_user || task.milestone.guild.user == current_user) %>
-              <%= link_to "Mark as complete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, class: "btn-milestone" %>
+              <%= link_to "Mark as complete", milestone_task_path(@milestone, task, task: {completed: true}), method: :patch, style:"padding: 8px;", class: "btn-milestone" %>
             <% end %>
           </div>
         </div>
