@@ -38,12 +38,13 @@
                 <h4><%= guild.name %></h4>
               </div>
               <div class="guild-info2">
-                 <p><%= guild.category %></p>
+                 <h6 style="padding-left: 2px; font-size: 20px;"><i class="fas fa-user-astronaut"></i> <%=guild.members.count %></h6>
                  <p><%= guild.description %></p>
               </div>
               <div class="guild-info3">
-              <%= link_to "Leave", guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 30px; top: 10px; padding: 5px;", class: "btn btn-danger", remote: true unless guild.user == current_user %>
+              <%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, guild_guildmembership_path(guild, id: guild.guildmemberships.find_by(user: current_user, guild: guild)), method: :delete, data: { confirm: "Are you sure you wish to leave #{guild.name}"}, style: "position: absolute; right: 10px; top: 10px;", class: "btn btn-exit", title:"Leave this guild?", remote: true unless guild.user == current_user %>
               </div>
+              <p style="position: absolute; left: 20px; top: 10px; padding: 2px 10px; background: white; border-radius: 0 0 10px 10px;"><%= guild.category %></p>
             </div>
             <% end %>
         </div>
@@ -52,7 +53,8 @@
         <%= link_to new_guild_path(@guild) do %>
           <div id="empty-guild">
             <div>
-             <i class="fas fa-plus-circle"> Create a new guild</i>
+             <i class="fas fa-plus-circle"></i>
+             <span >Create a new guild</span>
             </div>
           </div>
         <% end %>

@@ -108,11 +108,30 @@
   justify-content: center;
   align-items: center;
   font-size: 25px;
+  font-family: Ubuntu;
   &:hover {
     transform: scale(1.03);
+    text-decoration: none;
   }
   a {
     text-decoration: none;
     color: black;
+  }
+}
+
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+.btn-exit{
+  font-size: 18px;
+  border-radius: 10px;
+  i{
+    color: white;
+  }
+  i:hover {
+    transform: scale(1.3);
   }
 }
