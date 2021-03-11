@@ -3,9 +3,9 @@
         <% if current_user.guildmemberships.where(status: "pending").present? %>
             <button id="open"><i class="fas fa-envelope"></i></button>
             <div class="invites" id="invites">
-                    <button id="close">
-                      <i class="fas fa-times"></i>
-                    </button>
+              <button id="close">
+                <i class="fas fa-times"></i>
+              </button>
               <div class="invites-text">
                 <% current_user.guildmemberships.where(status: "pending").each do |membership| %>
                   <p>You have been invited to</p>

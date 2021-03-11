@@ -7,14 +7,14 @@
           <h2 class="show-nav-name"><%= @guild.name %></h2>
           <p class="show-nav-description"><%= @guild.description %></p>
         </div>
-        <div class="show-nav-img">
+        <ul class="nav show-nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
+        <div class="show-nav-img" style="width: 90%">
           <% if @guild.photo.attached? %>
-           <%= cl_image_tag(@guild.photo.key, crop: :fill, style: "height: 120px;") %>
+           <%= cl_image_tag(@guild.photo.key, crop: :fill, style: "height: 120px; left: 0px; width: 100%;") %>
           <% else %>
-            <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg" alt="">
+            <img src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1614945426/download_jisl0t.jpg" alt="" style="height: 120px; left: 0px; width: 100%;">
           <% end %>
         </div>
-        <ul class="nav show-nav-tabs" id="guildNavbar" role="tablist" style="flex-direction: column; border: none;">
           <li class="show-nav-item">
             <a class="show-nav-link active" id="all-posts-tab" data-toggle="tab" href="#all-posts" role="tab" aria-controls="all-posts" aria-selected="true" style="border: none;"><i class="fas fa-pen"></i>All posts</a>
           </li>
