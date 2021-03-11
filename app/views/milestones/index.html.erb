@@ -19,13 +19,13 @@
     <% end %>
   <% elsif @milestones.empty? %>
       <div id="empty-milestone-card">
-        Ops, it looks like there are no milestones currently.
+        Oops, it looks like there are no milestones currently!
         <br>
         <h1><i class="far fa-sad-cry mt-3"></i></h1>
       </div>
-        <p><%= link_to "Create milestone", new_guild_milestone_path(@guild), class: "btn manage-btn mt-3" %></p>
+        <p><%= link_to "Create milestone", new_guild_milestone_path(@guild), class: "btn btns mt-3" %></p>
   <% end %>
 </div>
 <div style="text-align: center;">
-  <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
+  <%= link_to "Back to guild", guild_path(@guild), class: "btn btns" %>
 </div>
