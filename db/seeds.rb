@@ -74,7 +74,7 @@ Task.create(title: "Landing page", description: "Add images to the landing page"
 Task.create(title: "Bugfixing", description: "Fix the bugs on the log-in page", milestone: tgmilestone, user: daniele, completed: true)
 Task.create(title: "Presentation", description: "Prepare for the presentation", milestone: tgmilestone, user: tom)
 Task.create(title: "Design buttons", description: "Find a cool design for the buttons", milestone: tgmilestone, user: jihye, completed: true)
-Task.create(title: "Footer", description: "Make an awesome footer", milestone: tgmilestone, user: daniele, completed: true)
+Task.create(title: "Footer", description: "Make an awesome footer for the app", milestone: tgmilestone, user: daniele, completed: true)
 Task.create(title: "Features", description: "Think of more features to add!", milestone: tgmilestone, user: jihye)
 
 
