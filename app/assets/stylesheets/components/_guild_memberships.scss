@@ -19,9 +19,9 @@
     font-size: 20px;
     position: relative;
     i {
-      position:absolute; 
-      left: 7px; 
-      top: -17px; 
+      position:absolute;
+      left: 7px;
+      top: -17px;
       color: #f9e279;
     }
   }
@@ -69,7 +69,7 @@
 #card-membership-user {
   overflow: hidden;
   height: 80px;
-  background: white;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;

@@ -1,7 +1,7 @@
 .card-user {
   overflow: hidden;
   height: 80px;
-  background: white;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -14,7 +14,8 @@
 
 }
 .card-user img {
-  height: 80px;
+  padding-left: 10px;
+  height: 65px;
   width: 80px;
   object-fit: cover;
 }
@@ -44,6 +45,7 @@
 
 .card-user-infos {
   width: 100%;
+  padding-left: 10px;
 }
 
 .card-user-infos h2 {
