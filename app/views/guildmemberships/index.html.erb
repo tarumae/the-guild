@@ -1,25 +1,55 @@
 <div class="container">
-  <h1>These are current guild members:</h1>
-  <% @memberships.each do |membership| %>
-    <% if membership.status == "approved" && membership.user != current_user %>
-      <div class="card-user">
-          <% if membership.user.photo.attached? %>
-            <%= cl_image_tag(membership.user.photo.key, crop: :fill, gravitate: :face, height: 80, width: 80, class: "avatar avatar-large dropdown-toggle border border-dark", style: "width: 80px; height: 80px;", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
-          <% else %>
-            <%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  <h1 style="text-align: center; margin-top: 20px; margin-bottom: 30px;">These are the current guild members:</h1>
+  <% if @memberships.map{ |membership| membership.status == "pending" }.include?(true) %>
+  <div id="pending-card">
+    <p style="margin: 0px;"><i class="far fa-pause-circle " style="font-size: larger;"></i> <%= @memberships.reject{ |membership| membership.status != "pending" }.count %> pending invitations...</p>
+  </div>
+  <% end %>
+  <% if !@memberships.empty? && @memberships.map{ |membership| membership.status == "pending" }.include?(false) %>
+    <% @memberships.each do |membership| %>
+      <% if membership.status == "approved" && membership.user != current_user %>
+        <div id="card-membership-user">
+            <% if membership.user.photo.attached? %>
+              <%= cl_image_tag(membership.user.photo.key, crop: :fill, gravitate: :face, height: 80, width: 80, class: "avatar avatar-large dropdown-toggle border border-dark", style: "width: 80px; height: 80px;", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png", class: "avatar avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+          <div class="card-user-infos">
+            <h2><%= membership.user.first_name unless nil? %> <%= membership.user.last_name unless nil? %> </h2>
+            <h3><%= "Nickname: #{membership.user.nickname}" unless membership.user.nickname.nil? %></h3>
+          </div>
+          <% if membership.guild.user == current_user %> 
+            <%= link_to "Make Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
+            <%= link_to "Remove as Admin" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.admin?%>
           <% end %>
-        <div class="card-user-infos">
-          <h2><%= membership.user.first_name unless nil? %> <%= membership.user.last_name unless nil? %> </h2>
-          <h3><%= "Nickname: #{membership.user.nickname}" unless membership.user.nickname.nil? %></h3>
+          <%= link_to "Ban" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :patch, class: "btn btn-success invite-btn" unless membership.banned?%>
+          <%= link_to "Unban" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.banned?%>
+          <%= link_to "Kick" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :delete, class: "btn btn-success invite-btn" unless membership.admin? %>
         </div>
-        <% if membership.guild.user == current_user %> 
-          <%= link_to "Add as Admin" , guild_guildmembership_path(id: membership, admin: true, banned: false), method: :patch, class: "btn btn-success invite-btn" unless membership.admin?%>
-          <%= link_to "Remove as Admin" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.admin?%>
-        <% end %>
-        <%= link_to "Ban" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :patch, class: "btn btn-success invite-btn" unless membership.banned?%>
-        <%= link_to "Unban" , guild_guildmembership_path(id: membership, admin: false, banned: false), method: :patch, class: "btn btn-success invite-btn" unless !membership.banned?%>
-        <%= link_to "Kick" , guild_guildmembership_path(id: membership, admin: false, banned: true), method: :delete, class: "btn btn-success invite-btn" unless membership.admin? %>
-      </div>
+      <% end %>
     <% end %>
+    <% else %>
+      <div id="empty-members-card">
+        Oops, it looks like there are no members currently.
+        <br>
+        <h1><i class="far fa-sad-cry mt-4"></i></h1>
+      </div>
   <% end %>
 </div>
+<div id="bottom-membership-container">
+  <div>
+    <%= link_to "Back to guild", guild_path(@guild), class: "btn manage-btn" %>
+  </div>
+  <div role="group">
+    <button id="btnGroupDrop1" type="button" class="btn manage-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Invite Members
+    </button>
+    <div class="dropdown-menu" style="border-radius: 10px; margin-top: 10px;" aria-labelledby="btnGroupDrop1">
+      <%= form_tag guild_users_path(@guild), method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Enter name, nickname or email", style: "width: 500px; border-radius: 10px; margin: 20px;" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  

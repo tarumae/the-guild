@@ -1,6 +1,7 @@
 class GuildmembershipsController < ApplicationController
   def index
     @memberships = policy_scope(Guildmembership).where(guild: params[:guild_id])
+    @guild = Guild.find(params[:guild_id])
   end
 
   def create
