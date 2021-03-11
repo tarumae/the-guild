@@ -24,23 +24,6 @@
     <% end %>
       </div>
     </div>
-  </div>
-  <div class="input-box">
-    <p>Description</p>
-    <%= f.input :description, label: false %>
-  </div>
-  <div class="input-box">
-    <p>Deadline</p>
-    <%= f.input :deadline, as: :date, html5: true, label: false%>
-  </div>
-  <div class="input-box">
-    <p>Reward</p>
-    <%= f.input :reward, label: false %>
-  </div>
-    <%= f.button :submit, class: "btn btn-form" %>
-  <% end %>
-</div>
-</div>
   <div class="col-xs-12 col-md-4 d-flex align-items-end" style="width: 40vw; color:#71618e; font-size: 20px;">
   <div>
     <p>What is a milestone?</p>
@@ -54,3 +37,4 @@
 <div style="text-align: center;">
   <%= link_to "Back to guild", guild_path(@guild), class: "btn btns" %>
 </div>
+  </div>
