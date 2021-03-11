@@ -53,7 +53,7 @@
                     <% if post.user.photo.attached? %>
                       <p style="font-size: 15px; font-weight: bold; color: #0f295f; margin: 0;"><%= cl_image_tag(post.user.photo.key, crop: :fill, gravitate: :face, height: 40, width: 40, class: "avatar avatar-lg border border-dark") %> <span style="margin-left: 5px;"><%= post.user.full_name %></span> <span style="font-size: 13px; font-weight: lighter; color: rgba(0,0,0,0.5);">- <%= post.created_at.strftime("%d/%m/%Y - %H:%M") %></span></p>
                     <% else %>
-                      <p style="font-size: 15px; font-weight: bold; color: #0f295f; margin: 0;"><img class="avatar avatar-lg border border-dark" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png" alt="" style="border-radius: 50%;" /> <span style="margin-left: 5px;"><%= post.user.full_name %></span> <span style="font-size: 10px; font-weight: lighter; color: rgba(0,0,0,0.5);"><%= post.created_at.strftime("%d/%m/%Y - %H:%M") %></span></p>
+                      <p style="font-size: 15px; font-weight: bold; color: #0f295f; margin: 0;"><img class="avatar avatar-lg" src="https://res.cloudinary.com/dx6rtf9wl/image/upload/v1615222704/user_xyjx1w.png" alt="" style="border-radius: 50%;" /> <span style="margin-left: 5px;"><%= post.user.full_name %></span> <span style="font-size: 10px; font-weight: lighter; color: rgba(0,0,0,0.5);"><%= post.created_at.strftime("%d/%m/%Y - %H:%M") %></span></p>
                     <% end %>
                   <p style="margin-bottom: 0px; margin-left: 30px; margin-top: 10px;">
                     <%= post.content %>
