@@ -61,7 +61,7 @@
         Add new task
       </button>
     </div>
-    <% @tasks.each do |task| %>
+    <% @tasks.order(created_at: :desc).each do |task| %>
       <div class="task-box">
         <div class="task-box1">
           <div class="task-box-avatar">
