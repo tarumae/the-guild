@@ -30,8 +30,8 @@
         <span>Nick name</span>
         <%= f.input :nickname, required: false, label: false, input_html: { autocomplete: "nickname"} %>
       </div>
-      <div class="input-box">
-        <%= f.input :photo, label: "Avatar Picture", as: :file %>
+      <div class="input-box" style="text-align: center;">
+        <%= f.input :photo, as: :file, input_html: { class: 'd-none'}, label_html: { class: 'btn btns'}, label: "Add avatar picture" %>
       </div>
       <div class="input-box">
         <%= f.input :password,

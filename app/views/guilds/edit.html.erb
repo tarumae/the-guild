@@ -17,7 +17,7 @@
     <p>Category</p>
     <%= f.input :category, error: "A guild must have a category.", collection: Guild::CATEGORIES, label: false %>
     </div>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file, input_html: { class: 'd-none'}, label_html: { class: 'btn btns'}, label: 'Choose a picture' %>
     <%= f.button :submit, class: "btn btn-form" %>
   <% end %>
 </div>
